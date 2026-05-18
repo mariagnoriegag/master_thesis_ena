@@ -1,4 +1,5 @@
 # Impacto de Mercados de Abastos en la Producción Agropecuaria (ENA)
+**Autora:** María Noriega
 
 Este proyecto de investigación utiliza un diseño cuasi-experimental de **Diferencias en Diferencias Espaciales (Spatial DiD)** combinado dinámicamente con un algoritmo de **Propensity Score Matching (PSM)**. El objetivo es evaluar el impacto causal de la creación y mejora de infraestructura de mercados de abastos sobre los márgenes comerciales, los precios en chacra y los canales de comercialización de la agricultura familiar en el Perú.
 
