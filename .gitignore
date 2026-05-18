@@ -1,0 +1,9 @@
+data_raw/
+data_external/
+data_spatial/
+data/*.rds
+data/*.sav
+data/*.dta
+data/*.csv
+.Rproj.user/
+.Rhistory
