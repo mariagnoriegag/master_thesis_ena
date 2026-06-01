@@ -1,11 +1,14 @@
 ---
-title: "Metodología"
+title: "Modelos Espaciales DiD-PSM: Impacto de Infraestructura Comercial"
 author: "María Noriega"
 institution: "Universidad de Ingeniería y Tecnología (UTEC)"
-format: 
+format:
   html:
     toc: true
     code-fold: true
+    theme: cosmo
+  gfm:
+    toc: true
 execute:
   warning: false
   message: false
