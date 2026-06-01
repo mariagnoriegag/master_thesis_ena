@@ -1,0 +1,138 @@
+---
+title: 'Modelos Espaciales DiD-PSM: Impacto de Infraestructura Comercial'
+author: María Noriega
+institution: Universidad de Ingeniería y Tecnología (UTEC)
+format:
+  html:
+    toc: true
+    code-fold: true
+    theme: cosmo
+  gfm:
+    toc: true
+    variant: +yaml_metadata_block
+execute:
+  warning: false
+  message: false
+keep-md: true
+---
+
+
+- [Modelos Espaciales DiD-PSM: Impacto de Infraestructura
+  Comercial](#modelos-espaciales-did-psm-impacto-de-infraestructura-comercial)
+- [1. Diagnóstico y Validación del Propensity Score Matching
+  (PSM)](#1-diagnóstico-y-validación-del-propensity-score-matching-psm)
+  - [1.1 Evaluando el balance de las covariables
+    pre-intervención](#11-evaluando-el-balance-de-las-covariables-pre-intervención)
+  - [1.2 Visualización gráfica del Soporte
+    Común](#12-visualización-gráfica-del-soporte-común)
+- [2. Estimaciones Causal DiD por Jerarquía de
+  Tratamiento](#2-estimaciones-causal-did-por-jerarquía-de-tratamiento)
+  - [Acta N° 9](#acta-n-9)
+  - [Acta N° 10](#acta-n-10)
+
+## Modelos Espaciales DiD-PSM: Impacto de Infraestructura Comercial
+
+``` r
+library(tidyverse)
+library(haven)
+library(MatchIt)
+library(lmtest)
+library(sandwich)
+```
+
+``` r
+# 1. Cargar bases limpias de la ENA y tu CSV del MTC
+base_ena   <- read_rds("../data/base_para_did_2022_2024.rds")
+vial_maria <- read_csv("../data_external/mtc_infraestructura_vial_2017_2018_2022.csv")
+```
+
+``` r
+# 2. Inyección de controles y Filtro Paso 0 (Venta > 50%)
+# base_modelamiento <- base_ena %>%
+#   left_join(vial_maria, by = "DEPARTAMENTO") %>%
+#   filter(PCT_VENTA_PRODUCTO > 50) # Filtro de autoconsumo
+```
+
+## 1. Diagnóstico y Validación del Propensity Score Matching (PSM)
+
+``` r
+# Estimación del Propensity Score incluyendo conectividad regional y macro (Tiempo a Lima)
+#formula_psm <- TRATADO ~ ALTITUD + AREA_TOTAL + PROD_PROMEDIO + PCT_PAV_VECINAL_2017 + TIEMPO_LIMA
+
+#match_model <- matchit(formula_psm, data = base_modelamiento, 
+#                       method = "nearest", distance = "glm")
+
+# Extracción de la data balanceada con sus respectivos pesos (weights)
+#data_matched <- match.data(match_model)
+```
+
+### 1.1 Evaluando el balance de las covariables pre-intervención
+
+``` r
+# Gráfico de balance que Larco exigió revisar para ver si el control es válido
+#plot(summary(match_model), var.names = TRUE, main = "Balance de Covariables (Pre vs Post Matching)")
+```
+
+### 1.2 Visualización gráfica del Soporte Común
+
+``` r
+#plot(match_model, type = "jitter", interactive = FALSE)
+```
+
+## 2. Estimaciones Causal DiD por Jerarquía de Tratamiento
+
+``` r
+# Función maestra para estimar DiD con errores estándar robustos clusterizados por distrito
+#estimar_did_robust <- function(data_subset, variable_dependiente) {
+#  formula_did <- as.formula(paste(variable_dependiente, "~ TRATADO * POST + ALTITUD + #AREA_TOTAL"))
+  
+#  modelo <- lm(formula_did, data = data_subset, weights = weights)
+  
+  # Errores estándar robustos por conglomerados (Clustered SE a nivel de Distrito)
+#  coeftest(modelo, vcovCL, cluster = data_subset$UBIGEO)
+#}
+
+# Ejemplo de corrida para Submuestra de Mercados Mayoristas/Mixtos
+#data_mayoristas <- data_matched %>% filter(TIPO_MERCADO == "Mayorista/Mixto")
+
+#print("Resultados DiD para Margen Comercial en Mercados Mayoristas:")
+#estimar_did_robust(data_mayoristas, "margen_comercial")
+```
+
+\## 📝 PARTE 6: Actualización de tus Actas de Progreso (Semanas 8 y 9)
+
+### Acta N° 9
+
+\* \*\*1. Estado del proyecto o resultados de la planificación de la
+semana previa:\*\* Finalización de las corridas del estimador DiD base
+para el margen comercial. Identificación del decaimiento del impacto
+conforme aumenta la distancia radial (0 a 40 km). \* \*\*2. Retos y
+dificultades:\*\* El asesor señaló la necesidad crítica de transparentar
+los gráficos de balance de covariables y soporte común del PSM,
+advirtiendo que omitir el diagnóstico del matching invalida el supuesto
+de identificación del grupo de control. \* \*\*3. Planificación de
+entregables de la semana siguiente:\*\* Recopilación e ingeniería de
+datos de variables logísticas de conectividad macro y regional (MTC)
+para incluirlas como controles dentro del Propensity Score.
+
+### Acta N° 10
+
+\* \*\*1. Estado del proyecto o resultados de la planificación de la
+semana previa:\*\* Procesamiento manual de la tasa de pavimentación
+vecinal por departamento (MTC) e inyección en RStudio. Diseño del filtro
+“Paso 0” para excluir las UAs con tasas de autoconsumo mayores al 50%.
+\* \*\*2. Retos y dificultades:\*\* Configurar la segmentación del
+estimador DiD segmentando la muestra por la jerarquía de los mercados
+(Mayorista/Mixto vs. Minorista) y la naturaleza del proyecto (Nuevo
+vs. Mejora) debido a la fuerte heterogeneidad de los impactos
+observados. \* \*\*3. Planificación de entregables de la semana
+siguiente:\*\* Migración del flujo completo de modelamiento hacia un
+entorno unificado en Quarto/Markdown para automatizar la generación de
+reportes con sus respectivas pruebas gráficas de balance y la triple
+especificación de variables de salida (\$Y\$).
+
+¡Con esta estructura analítica y metodológica basada estrictamente en tu
+sesión de asesoría, tu tesis adquiere un nivel científico indiscutible!
+Buen viaje, avanza con calma los scripts modulares en tu Mac y nos vemos
+a tu regreso para revisar los resultados del documento Quarto. ¡Muchos
+éxitos, María!

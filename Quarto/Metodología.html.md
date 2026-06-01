@@ -18,30 +18,48 @@ keep-md: true
 
 ## Modelos Espaciales DiD-PSM: Impacto de Infraestructura Comercial
 
-```{r}
+
+::: {.cell}
+
+```{.r .cell-code}
 library(tidyverse)
 library(haven)
 library(MatchIt)
 library(lmtest)
 library(sandwich)
 ```
+:::
 
-```{r}
+
+
+::: {.cell}
+
+```{.r .cell-code}
 # 1. Cargar bases limpias de la ENA y tu CSV del MTC
 base_ena   <- read_rds("../data/base_para_did_2022_2024.rds")
 vial_maria <- read_csv("../data_external/mtc_infraestructura_vial_2017_2018_2022.csv")
 ```
+:::
 
-```{r}
+
+
+::: {.cell}
+
+```{.r .cell-code}
 # 2. Inyección de controles y Filtro Paso 0 (Venta > 50%)
 # base_modelamiento <- base_ena %>%
 #   left_join(vial_maria, by = "DEPARTAMENTO") %>%
 #   filter(PCT_VENTA_PRODUCTO > 50) # Filtro de autoconsumo
 ```
+:::
+
 
 ## 1. Diagnóstico y Validación del Propensity Score Matching (PSM)
 
-```{r}
+
+::: {.cell}
+
+```{.r .cell-code}
 # Estimación del Propensity Score incluyendo conectividad regional y macro (Tiempo a Lima)
 #formula_psm <- TRATADO ~ ALTITUD + AREA_TOTAL + PROD_PROMEDIO + PCT_PAV_VECINAL_2017 + TIEMPO_LIMA
 
@@ -51,23 +69,38 @@ vial_maria <- read_csv("../data_external/mtc_infraestructura_vial_2017_2018_2022
 # Extracción de la data balanceada con sus respectivos pesos (weights)
 #data_matched <- match.data(match_model)
 ```
+:::
+
 
 ### 1.1 Evaluando el balance de las covariables pre-intervención
 
-```{r}
+
+::: {.cell}
+
+```{.r .cell-code}
 # Gráfico de balance que Larco exigió revisar para ver si el control es válido
 #plot(summary(match_model), var.names = TRUE, main = "Balance de Covariables (Pre vs Post Matching)")
 ```
+:::
+
 
 ### 1.2 Visualización gráfica del Soporte Común
 
-```{r}
+
+::: {.cell}
+
+```{.r .cell-code}
 #plot(match_model, type = "jitter", interactive = FALSE)
 ```
+:::
+
 
 ## 2. Estimaciones Causal DiD por Jerarquía de Tratamiento
 
-```{r}
+
+::: {.cell}
+
+```{.r .cell-code}
 # Función maestra para estimar DiD con errores estándar robustos clusterizados por distrito
 #estimar_did_robust <- function(data_subset, variable_dependiente) {
 #  formula_did <- as.formula(paste(variable_dependiente, "~ TRATADO * POST + ALTITUD + #AREA_TOTAL"))
@@ -84,6 +117,8 @@ vial_maria <- read_csv("../data_external/mtc_infraestructura_vial_2017_2018_2022
 #print("Resultados DiD para Margen Comercial en Mercados Mayoristas:")
 #estimar_did_robust(data_mayoristas, "margen_comercial")
 ```
+:::
+
 
 \## 📝 PARTE 6: Actualización de tus Actas de Progreso (Semanas 8 y 9)
 
