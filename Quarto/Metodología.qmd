@@ -9,9 +9,12 @@ format:
     theme: cosmo
   gfm:
     toc: true
+    variant: +yaml_metadata_block
 execute:
   warning: false
   message: false
+# Obliga a Quarto a dejar las imágenes a la vista de GitHub
+keep-md: true
 ---
 
 ## Modelos Espaciales DiD-PSM: Impacto de Infraestructura Comercial
