@@ -1,5 +1,5 @@
 ---
-title: "Modelos Espaciales DiD-PSM: Impacto de Infraestructura Comercial"
+title: "Análisis de Robustez Causal: Evaluación Multitemporal de Mercados de Abastos"
 author: "María Noriega"
 institution: "Universidad de Ingeniería y Tecnología (UTEC)"
 format:
@@ -16,85 +16,149 @@ execute:
 keep-md: true
 ---
 
-## Modelos Espaciales DiD-PSM: Impacto de Infraestructura Comercial
+# 1. Causal Framework y configuracipon del Filtro Comercial (Paso 0)
+
+Para garantizar que el modelo de Diferencias en Diferencias (\$DiD\$) evalúe impactos sobre la Agricultura Familiar comercial y no de subsistencia, se define una variable de control modificable para el **Filtro Paso 0** . Esta restringe las observaciones basales a productores con intenciones de venta superiores al umbral establecido.
 
 ```{r}
 library(tidyverse)
-library(haven)
+library(knitr)
+library(cobalt)
+```
+
+```{r}
+# Parámetros modificables en fórmula (Exigencia de flexibilización de José Larco)
+umbral_venta_comercial <- 50  # Porcentaje mínimo de comercialización (> 50%)
+radio_spillovers_km    <- 20  # Radio radial geográfico de prueba
+```
+
+#Este documento expone de forma integrada el protocolo econométrico unificado sugerido por el #comité revisor. Se aplica un control secuencial de la Agricultura Familiar mediante el **Filtro Paso 0** #para remover unidades agrícolas cuya comercialización sea inferior al 50% en la línea de base.
+
+```{r carga_motores_pesados}
+# Carga de las librerías base y fuentes pesadas desde la carpeta /R
+#source("../R/04_e_controles_matching_parametrizado.R")
+#library(knitr)
+
+#path_vial_maria <- "../data_external/mtc_infraestructura_vial_2017_2018_2022.csv"
+#umbral_dinamico_venta <- 50 # Parámetro modificable para la sensibilidad del Paso 0
+```
+
+# 2. Carga de Paneles .rds y Diagnóstico Visual del Matching (PSM)
+
+Llamamos a los archivos consolidados en la fase previa utilizando rutas relativas indexadas (`../data/`). A modo demostrativo para el comité revisor, realizamos el balanceo logístico y la **Inspección de Covarianza** para la **Cohorte 2 (2018-2022)**.
+
+```{r}
+# 2.1 Cargar el panel .rds de la Cohorte 2 que contiene el IPC híbrido
+panel_c2_raw <- readRDS("../../data/base_para_did_2018_2022.rds")
+```
+
+```{r}
+# 2.2 Aplicación del Filtro Paso 0 utilizando la variable paramétrica
+panel_c2_filtrado <- panel_c2_raw %>%
+  filter(pct_venta_producto >= umbral_venta_comercial)
+```
+
+```{r}
+
+# 2.3 Simulación del Algoritmo de Spillovers Geográficos y Matching (MatchIt)
+# (La variable es_tratado se reasigna espacialmente usando el mapa de centroides)
 library(MatchIt)
-library(lmtest)
-library(sandwich)
+
+formula_psm <- es_tratado ~ control_sup_ha + control_edad + control_educ + 
+                             control_credito + pct_transporte_pavimentado + tiempo_lima
+
+modelo_psm_c2 <- matchit(formula_psm, data = panel_c2_filtrado, 
+                         method = "nearest", distance = "glm", caliper = 0.05)
+
+df_matched_c2 <- match.data(modelo_psm_c2)
+```
+
+# 1. Visualización y Diagnóstico del Soporte Común (Covariate Balance Plot)
+
+Para validar el balance antes de los resultados puros, se computa el modelo logístico de puntaje de propensión para la **Cohorte 2017-2019 (Intervención 2018)**.
+
+```{r}
+diagnostico_c1 <- ejecutar_pipeline_robustez(
+  path_base_base = "../data/base_para_did_2017_2019.rds",
+  path_base_panel = "../data/base_para_did_2017_2019.rds",
+  path_vial = path_vial_maria,
+  anio_base = 2017,
+  col_vial_anio = "PCT_PAV_VECINAL_2017",
+  umbral_venta = umbral_dinamico_venta,
+  radio_km = 20,
+  submuestra = "Mejora",
+  var_dependiente = "log_precio_chacra"
+)
 ```
 
 ```{r}
-# 1. Cargar bases limpias de la ENA y tu CSV del MTC
-base_ena   <- read_rds("../data/base_para_did_2022_2024.rds")
-vial_maria <- read_csv("../data_external/mtc_infraestructura_vial_2017_2018_2022.csv")
+# Generación del Love Plot con umbral estricto (< 0.1) según la especificación técnica de RPubs
+love.plot(diagnostico_c1$psm_output, 
+          stats = c("m", "ks"), 
+          thresholds = c(m = 0.1, ks = 0.05), 
+          abs = TRUE,
+          colors = c("dodgerblue4", "firebrick"),
+          shapes = c(16, 17))
 ```
+
+## 1.1 Listado Estructural de Distritos Matcheados en el Soporte Común
+
+A continuación, se listan los primeros Ubigeos emparejados en el soporte común bajo la calibración logística y de fricción espacial de carreteras vecinales:
 
 ```{r}
-# 2. Inyección de controles y Filtro Paso 0 (Venta > 50%)
-# base_modelamiento <- base_ena %>%
-#   left_join(vial_maria, by = "DEPARTAMENTO") %>%
-#   filter(PCT_VENTA_PRODUCTO > 50) # Filtro de autoconsumo
+distritos_validos <- diagnostico_c1$matched_data %>%
+  group_by(ubigeo, DEPARTAMENTO, PROVINCIA, DISTRITO, es_tratado) %>%
+  summarize(Unidades_Agricolas_Emparejadas = n(), .groups = 'drop') %>%
+  arrange(ubigeo, desc(es_tratado))
+
+kable(head(distritos_validos, 10), caption = "Muestra de Distritos e Infras Estructuradas en el Soporte Común")
 ```
 
-## 1. Diagnóstico y Validación del Propensity Score Matching (PSM)
+# 2. Construcción de la Matriz Final de Robustez Intertemporal
+
+Ejecutamos el bucle macro-econométrico automatizado sobre nuestras **3 variables de resultado (**Y) cruzadas secuencialmente con las **3 cohortes de evaluación histórica**, aislando el efecto de la política agraria bajo las dos clasificaciones requeridas: según tipo de obra (*Mejora* vs. *Nuevo Mercado*) y jerarquía comercial (*Mayorista/Mixto* vs. *Minorista*).
 
 ```{r}
-# Estimación del Propensity Score incluyendo conectividad regional y macro (Tiempo a Lima)
-#formula_psm <- TRATADO ~ ALTITUD + AREA_TOTAL + PROD_PROMEDIO + PCT_PAV_VECINAL_2017 + TIEMPO_LIMA
+# Inicialización de vectores de iteración estructural
+variables_y <- c("pct_venta_local", "margen_comercial", "log_precio_chacra")
+cohortes    <- list(
+  list(base = "../data/base_para_did_2017_2019.rds", panel = "../data/base_para_did_2017_2019.rds", anio = 2017, col = "PCT_PAV_VECINAL_2017", nombre = "2017-2019"),
+  list(base = "../data/base_para_did_2018_2022.rds", panel = "../data/base_para_did_2018_2022.rds", anio = 2018, col = "PCT_PAV_VECINAL_2018", nombre = "2018-2022"),
+  list(base = "../data/base_para_did_2022_2024.rds", panel = "../data/base_para_did_2022_2024.rds", anio = 2022, col = "PCT_PAV_VECINAL_2022", nombre = "2022-2024")
+)
+dimensiones <- c("Mejora", "Nuevo Mercado", "Mayorista/Mixto", "Minorista")
 
-#match_model <- matchit(formula_psm, data = base_modelamiento, 
-#                       method = "nearest", distance = "glm")
+matriz_ejecutiva_robustez <- data.frame()
 
-# Extracción de la data balanceada con sus respectivos pesos (weights)
-#data_matched <- match.data(match_model)
+for (d in dimensiones) {
+  for (y in variables_y) {
+    fila <- data.frame(Filtro_Intervencion = d, Variable_Y = y)
+    
+    for (c in cohortes) {
+      res_celda <- ejecutar_pipeline_robustez(
+        path_base_base = c$base, path_base_panel = c$panel, path_vial = path_vial_maria,
+        anio_base = c$anio, col_vial_anio = c$col, umbral_venta = umbral_dinamico_venta,
+        radio_km = 20, submuestra = d, var_dependiente = y
+      )
+      
+      nombre_columna <- paste0("Cohorte_", gsub("-", "_", c$nombre))
+      
+      if (!is.null(res_celda$error) && res_celda$error) {
+        fila[[nombre_columna]] <- "N/A"
+      } else {
+        # Extraer coeficiente DiD (es_tratado:post) y su nivel de significancia estadística
+        coef_did <- round(res_celda$reg_results["es_tratado:post", "Estimate"], 4)
+        p_val    <- res_celda$reg_results["es_tratado:post", "Pr(>|t|)"]
+        estrellas <- case_when(p_val < 0.01 ~ "***", p_val < 0.05 ~ "**", p_val < 0.1 ~ "*", TRUE ~ "")
+        
+        fila[[nombre_columna]] <- paste0(coef_did, estrellas)
+      }
+    }
+    matriz_ejecutiva_robustez <- rbind(matriz_ejecutiva_robustez, fila)
+  }
+}
+
+# Renderizar Matriz Ejecutiva Final en formato Markdown puro para GitHub y HTML Cosmo
+kable(matriz_ejecutiva_robustez, 
+      caption = paste("Cuadro de Coeficientes DiD Ponderados por PSM (Filtro Comercial >", umbral_dinamico_venta, "%)"))
 ```
-
-### 1.1 Evaluando el balance de las covariables pre-intervención
-
-```{r}
-# Gráfico de balance que Larco exigió revisar para ver si el control es válido
-#plot(summary(match_model), var.names = TRUE, main = "Balance de Covariables (Pre vs Post Matching)")
-```
-
-### 1.2 Visualización gráfica del Soporte Común
-
-```{r}
-#plot(match_model, type = "jitter", interactive = FALSE)
-```
-
-## 2. Estimaciones Causal DiD por Jerarquía de Tratamiento
-
-```{r}
-# Función maestra para estimar DiD con errores estándar robustos clusterizados por distrito
-#estimar_did_robust <- function(data_subset, variable_dependiente) {
-#  formula_did <- as.formula(paste(variable_dependiente, "~ TRATADO * POST + ALTITUD + #AREA_TOTAL"))
-  
-#  modelo <- lm(formula_did, data = data_subset, weights = weights)
-  
-  # Errores estándar robustos por conglomerados (Clustered SE a nivel de Distrito)
-#  coeftest(modelo, vcovCL, cluster = data_subset$UBIGEO)
-#}
-
-# Ejemplo de corrida para Submuestra de Mercados Mayoristas/Mixtos
-#data_mayoristas <- data_matched %>% filter(TIPO_MERCADO == "Mayorista/Mixto")
-
-#print("Resultados DiD para Margen Comercial en Mercados Mayoristas:")
-#estimar_did_robust(data_mayoristas, "margen_comercial")
-```
-
-\## 📝 PARTE 6: Actualización de tus Actas de Progreso (Semanas 8 y 9)
-
-### Acta N° 9
-\* \*\*1. Estado del proyecto o resultados de la planificación de la semana previa:\*\* Finalización de las corridas del estimador DiD base para el margen comercial. Identificación del decaimiento del impacto conforme aumenta la distancia radial (0 a 40 km).
-\* \*\*2. Retos y dificultades:\*\* El asesor señaló la necesidad crítica de transparentar los gráficos de balance de covariables y soporte común del PSM, advirtiendo que omitir el diagnóstico del matching invalida el supuesto de identificación del grupo de control.
-\* \*\*3. Planificación de entregables de la semana siguiente:\*\* Recopilación e ingeniería de datos de variables logísticas de conectividad macro y regional (MTC) para incluirlas como controles dentro del Propensity Score.
-
-### Acta N° 10
-\* \*\*1. Estado del proyecto o resultados de la planificación de la semana previa:\*\* Procesamiento manual de la tasa de pavimentación vecinal por departamento (MTC) e inyección en RStudio. Diseño del filtro "Paso 0" para excluir las UAs con tasas de autoconsumo mayores al 50%.
-\* \*\*2. Retos y dificultades:\*\* Configurar la segmentación del estimador DiD segmentando la muestra por la jerarquía de los mercados (Mayorista/Mixto vs. Minorista) y la naturaleza del proyecto (Nuevo vs. Mejora) debido a la fuerte heterogeneidad de los impactos observados.
-\* \*\*3. Planificación de entregables de la semana siguiente:\*\* Migración del flujo completo de modelamiento hacia un entorno unificado en Quarto/Markdown para automatizar la generación de reportes con sus respectivas pruebas gráficas de balance y la triple especificación de variables de salida (\$Y\$).
-
-¡Con esta estructura analítica y metodológica basada estrictamente en tu sesión de asesoría, tu tesis adquiere un nivel científico indiscutible! Buen viaje, avanza con calma los scripts modulares en tu Mac y nos vemos a tu regreso para revisar los resultados del documento Quarto. ¡Muchos éxitos, María!
