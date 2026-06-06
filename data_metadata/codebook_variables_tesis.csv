@@ -1,0 +1,19 @@
+Bloque,Variable,Tipo_Dato,Escala_Medida,Descripcion_Metodologica
+Identificadores Estructurales,ubigeo,Character (6 dígitos),Código Político Distrital,"Llave maestra de agregación territorial distrital. Construida con paste0(CCDD, CCPP, CCDI)."
+Identificadores Estructurales,departamento,Character,Nombre de Región,Nombre de la región política capturado originalmente en el Capítulo 100 y homologado a ASCII.
+Identificadores Estructurales,nombre_cultivo,Character,Nombre del Producto,Identificador nominal del tipo de planta alimentaria transaccionada por el productor en el Módulo 200ab.
+Identificadores Estructurales,anio,Numeric (Entero),Años cronológicos (2017-2024),Dimensión temporal estructural que identifica la procedencia cronológica de la muestra del INEI.
+Variables Dependientes e Insumos,margen_comercial,Numeric (Continuo),Soles reales por kilogramo,Variable dependiente principal (Flete Proxy). Diferencia neta entre el valor de venta externo y el intra-chacra.
+Variables Dependientes e Insumos,log_precio_chacra,Numeric (Continuo),Valor logarítmico natural,Logaritmo natural del precio real a pie de parcela. Mide elasticidades de transmisión de precios directas.
+Variables Dependientes e Insumos,p_chacra_real,Numeric (Continuo),Soles constantes por kilogramo,Precio promedio bruto nominal en chacra deflactado por el IPC regional específico del rubro.
+Variables Dependientes e Insumos,p_fuera_real,Numeric (Continuo),Soles constantes por kilogramo,Precio promedio bruto nominal en mercado local o feria deflactado por el IPC regional específico.
+Variables Dependientes e Insumos,p_chacra_final / p_fuera_final,Numeric (Continuo),Soles reales (Imputados),Precios reales corregidos mediante imputación provincial (coalesce) para mitigar la pérdida muestral por NaN.
+Variable de Tratamiento (MTC),pct_transporte_pavimentado,Numeric (Porcentual),Escala de 0% a 100%,Variable del nivel de tratamiento de infraestructura regional. Porcentaje de vías vecinales pavimentadas (MTC).
+Variables de Control Biométricas,control_sexo,Numeric (Porcentual),Escala de 0% a 100%,Tasa de representatividad y liderazgo femenino. Porcentaje de Unidades Agropecuarias dirigidas por mujeres jefas.
+Variables de Control Biométricas,control_edad,Numeric (Continuo),Valor logarítmico natural,Logaritmo natural de la edad biológica promedio del productor principal (Jefe de hogar filter(P1102 == 1)).
+Variables de Control Biométricas,control_educ,Numeric (Porcentual),Escala de 0% a 100%,Tasa de capital humano distrital. Porcentaje de jefes de hogar con educación secundaria completa o superior (P1105 >= 6).
+Variables de Control Financieras/Sociales,control_asociacion,Numeric (Porcentual),Escala de 0% a 100%,Tasa de asociatividad agraria local. Porcentaje de agricultores pertenecientes a cooperativas o asociaciones (Cap. 800).
+Variables de Control Financieras/Sociales,control_credito,Numeric (Porcentual),Escala de 0% a 100%,Tasa de inclusión financiera formal. Porcentaje de agricultores con créditos agrícolas aprobados (Cap. 900).
+Variables de Control Financieras/Sociales,c_superficie,Numeric (Continuo),Hectáreas promedio físicas,Escala física predial promedio. Hectáreas totales de la UA estimadas del Módulo 100 para controlar sesgo de minifundio.
+Variables de Entorno e Inflación,CATEGORIA_IPC,Character,Grupos alimenticios INEI,"Rubro alimentario de la canasta familiar ('Frutas', 'Pan y cereales', 'Hortalizas...') usado para emparejar la inflación."
+Variables de Entorno e Inflación,ipc_deflactor,Numeric (Continuo),Índice base 100 regional,Índice de Precios al Consumidor específico por departamento y tipo de alimento publicado formalmente por el INEI.

@@ -16,7 +16,120 @@ execute:
 keep-md: true
 ---
 
-# 1. Causal Framework y configuracipon del Filtro Comercial (Paso 0)
+0.  Objetivos
+
+La creación/desarrollo de nuevos mercados de abasto, impactan en el direccionamiento de las ventas en chacra?
+
+La creación/desarrollo de nuevos mercados de abasto, impactan en el direccionamiento de las ventas en el precio venta?
+
+\*revisar si existe una correlación en costo y direccionamiento de venta
+
+0.1 Variables a incluir
+
+Variables dependientes:
+
+-   Direccionamiento de las ventas
+
+-   Precio de venta
+
+Variables indepentientes:
+
+Instalación de nuevo mercado
+
+Nivel de análisis
+
+Distrito
+
+Muestra:
+
+¿Qué criterios usé para filtrar?
+
+1.  En el caso de mejoras: son ampliaciones de capacidad
+2.  Se verificó que las ampliaciones de capacidad fueron concluidas.
+
+Diseño del pseudo-experimento
+
+Variables covariables\
+Por distrito y cultivo:\
+1. control_sexo\
+2. control_edad\
+3. control_educ\
+4. control_asociacion\
+5. control_cred\
+\
+Por distrito:\
+6. Poblacion (2017, 2018, 2022)\
+7. N Mercados Preexistentes (2017, 2018, 2022)\
+8. (NUEVO) N Agricultores (utilizando datos del Censo Agropecuario como proxy)\
+9. (NUEVO) % Mercado Mayorista o Mixto (2017, 2018, 2022)\
+10. (NUEVO) Superficie cosechada suma agregada (2017, 2018, 2022)\
+10. (NUEVO) % Superficie total UAs o cosechado (2017, 2018, 2022)\
+11. (NUEVO) Varianza % Superficie total UAs o cosechado (2017, 2018, 2022)\
+12. Superficie KM2 (fijo del distrito)\
+13. Altitud (fijo del distrito)\
+\
+Por departamento:\
+14. % de Pavimentación vecinal\
+15. (NUEVO) PBI / VAB agricultura\
+
+**Tarea 1: Verificar el "Top 3" de Cultivos en las Provincias de Interés\
+**Verificar si estos cultivos tienen presencia y son representativos en las provincias específicas donde se ubican las 4 intervenciones de mercado (es decir, en los territorios asignados a Áncash, Arequipa y Puno).\
+**Aunque ahora me voy a quedar solo con uno**\
+
+**Tarea 2: Análisis Exploratorio Variando el Radio (5 km y 10 km)\
+**Correr prueba interactiva en el código fijando el radio de influencia primero en **5 km** y luego en **10 km** para las intervenciones, se sugiere 80km tambien.\
+
+**Tarea 3: Modificación de la Estrategia de Control (Matching) Mahalanobis matching Macro**
+
+-   **A nivel macro:** En lugar de buscar distritos directamente, **el primer matching se realizará a nivel de Provincia**. Esto se debe a que a nivel provincial casi todas las observaciones de la encuesta tienen muestra, reduciendo el sesgo por falta de datos.
+
+-   **Variables de la Provincia:** En este primer filtro para ubicar la "provincia control", se utilizarán variables como el nivel educativo promedio, la distancia a la capital de la región, el porcentaje agregado del cultivo principal **(*Top 1 crop*)** y la superficie cultivada.
+
+    -   **Educativo:** Nivel educativo promedio de la provincia.
+
+    -   **Dist. Lima:** Distancia de la provincia hacia Lima.
+
+    -   **Dist. Cap. Región:** Distancia de la provincia hacia la capital de su respectiva región.
+
+    -   **% 1 Top Crops:** El porcentaje de terreno o producción sembrado con el cultivo principal o predominante en esa provincia.
+
+    -   **Sup. Media:** Superficie o tamaño medio de las fincas agrícolas.
+
+    -   **Sup. Desv.:** Desviación estándar (o varianza) de la superficie de las fincas de la provincia.
+
+    -   **Mercados:** Número de mercados preexistentes y saturación comercial en el territorio.
+
+    -   **Productores:** El número total de productores o agricultores de la provincia (obtenido a través de datos del Censo).
+
+    -   **Pvmto. Prov. (Pavimento):** Índice de infraestructura vial o porcentaje de pavimentación a nivel provincial (que se repite porque lo tenemos a nivel Departamento).
+
+    -   **Criterio de Distancia:** Para medir la similitud y cercanía entre la provincia tratada y sus potenciales controles, se implementará matemáticamente la **distancia de Mahalanobis**. Esta métrica es ideal porque pondera las distancias considerando las correlaciones existentes entre las variables de control.
+
+    -   Asegurarse de que las provincias candidatas a control tengan exactamente las mismas covariables completas (sin vacíos o *NA's*) para que la distancia de Mahalanobis pueda calcularse correctamente.
+
+**Tarea 4: Hallar el distrito focal para control**
+
+**1. Selección de la Provincia y el "Distrito Focal"**
+
+Dentro de esa provincia control seleccionada, para determinar cuál será el **"distrito focal"** (el punto céntrico equivalente al distrito intervenido), se utilizará un criterio de orden político-administrativo:
+
+-   Se elegirá el **distrito capital de la provincia** u otro con **otro método (pobrar cada uno y hallar valores por zona - Mahalanobis matching micro)**, que se hablará luego para defirlo en el control como el punto de origen.
+
+**2. Trazado del Radio y Emparejamiento Micro (Ampliar Kilómetros)**
+
+Una vez fijado ese distrito capital como el centroide o punto de origen en la zona de control, el siguiente paso es **ampliar los kilómetros del radio de influencia** (hacer el "área de vecindad"):
+
+-   Trazar un radio equivalente (probando con **15 km, 50 km, 80km**) alrededor de ese distrito capital de control para capturar todos los distritos colindantes que queden atrapados dentro de ese margen geométrico.
+
+**3. El Emparejamiento Final de Distritos (Diferencias en Diferencias)**
+
+Con la vecindad expandida en la zona de control, finalmente cruzas los datos con las variables que provienen de la **ENA y otras fuentes de información** para hacer un emparejamiento directo entre los distritos de la zona tratada y los distritos de la zona de control.
+
+**Diferencias en Diferencias (DiD)** controlando por las variables distritales y del productor que se definieron.
+
+\
+
+# 1. Causal Framework y configuracion del Filtro Comercial (Paso 0)
 
 Para garantizar que el modelo de Diferencias en Diferencias (\$DiD\$) evalúe impactos sobre la Agricultura Familiar comercial y no de subsistencia, se define una variable de control modificable para el **Filtro Paso 0** . Esta restringe las observaciones basales a productores con intenciones de venta superiores al umbral establecido.
 

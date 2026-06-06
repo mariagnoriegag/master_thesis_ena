@@ -1,0 +1,33 @@
+=========================================================================
+       RESUMEN ANALÍTICO DEL DISEÑO CAUSAL DEL PSEUDO-EXPERIMENTO       
+            Tesis de Maestría: María Noriega (CORREGIDO)                 
+=========================================================================
+
+1. ESTRATEGIA DE IDENTIFICACIÓN:
+   Debido a la ausencia de asignación aleatoria experimental pura de las
+   carreteras pavimentadas por parte del MTC, el estudio implementa un
+   diseño cuasi-experimental por Pseudo-Paneles a nivel micro-territorial
+   de Distrito-Cultivo, controlando sesgos geográficos e inflacionarios.
+
+2. COHORTE ESTRUCTURAL MODIFICADA (Ventana Temporal 2017 vs 2019):
+   - Ubigeo 020108 correspondiente a: 020108 - Olleros (Huaraz, Ancash)
+   - Ubigeo 040520 correspondiente a: 040520 - Majes (Caylloma, Arequipa)
+   - Total de combinaciones cultivo-visita encontradas en esta cohorte: 86
+   - Nota teórica: Permite evaluar el impacto vial estructural pre-pandemia.
+
+3. COHORTE RECIENTE (Ventana Temporal 2022 vs 2024):
+   - Ubigeo 040124 correspondiente a: 040124 - Uchumayo (Arequipa, Arequipa)
+   - Ubigeo 211207 correspondiente a: 211207 - San Juan del Oro (Sandia, Puno)
+   - Total de combinaciones cultivo-visita encontradas en esta cohorte: 37
+   - Nota teórica: Captura el impacto de la infraestructura vial post-recuperación económica.
+
+4. OBSERVACIÓN CRÍTICA DE LOS MICRODATOS REVELADA POR ESTA AUDITORÍA:
+   Como se puede apreciar en las tablas descargadas (.csv), existen múltiples
+   cultivos tradicionales que aparecen en el año base (Pre) pero tienen
+   frecuencia NA en el año posterior (Post), o viceversa. Esto demuestra que
+   el muestreo aleatorio rotativo distrital del INEI genera pérdidas de
+   seguimiento directo. Queda metodológicamente justificado aplicar el algoritmo
+   de imputación provincial (coalesce) programado en el pipeline '01_preparacion_paneles_rds.R'
+   para rescatar la representatividad productiva y evitar sesgos de atrición.
+
+=========================================================================
