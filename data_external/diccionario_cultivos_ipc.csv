@@ -1,0 +1,550 @@
+nombre_cultivo,freq_2017,freq_2018,freq_2019,freq_2022,freq_2024,CATEGORIA_IPC,ES_CULTIVO_CORE_TESIS
+limon acido,1557,1449,1497,1321,2018,Frutas,1
+naranjo,2347,2289,2300,1854,2280,Frutas,1
+cebolla,384,422,390,305,451,"Hortalizas, legumbres y tubérculos",1
+papa blanca,6542,6709,5813,5239,8588,"Hortalizas, legumbres y tubérculos",1
+maiz amarillo duro,3882,3426,3371,4121,3646,Pan y cereales,1
+quinua,1138,1045,1238,835,1618,Pan y cereales,1
+ajonjoli,8,8,9,NA,3,Aceites y grasas,0
+almendro,3,1,4,3,7,Aceites y grasas,0
+castaña,1,11,3,43,5,Aceites y grasas,0
+macadamia,NA,NA,NA,1,NA,Aceites y grasas,0
+mani para aceite,3,3,3,3,NA,Aceites y grasas,0
+mani para fruta,109,111,81,65,57,Aceites y grasas,0
+nogal,28,26,26,20,30,Aceites y grasas,0
+olivo,405,402,374,460,627,Aceites y grasas,0
+pecano,204,215,212,229,270,Aceites y grasas,0
+sacha inchi,28,32,41,8,8,Aceites y grasas,0
+cacao,1941,1937,2170,2390,2590,"Café, té y cacao",0
+cafe pergamino,3690,3574,3393,3438,3154,"Café, té y cacao",0
+te,14,17,NA,15,NA,"Café, té y cacao",0
+aguaje,249,174,188,187,239,Frutas,0
+aguaymanto,100,80,77,35,38,Frutas,0
+anona,92,71,58,37,47,Frutas,0
+arandano,27,52,41,1,127,Frutas,0
+araza,55,43,23,32,9,Frutas,0
+arbol del pan,88,68,54,44,48,Frutas,0
+atemoya,NA,NA,3,NA,NA,Frutas,0
+caimito,360,256,215,108,141,Frutas,0
+camu camu,101,83,88,81,30,Frutas,0
+capuli,164,144,191,125,223,Frutas,0
+caqui,3,2,NA,6,19,Frutas,0
+carambola,154,126,136,93,121,Frutas,0
+chalarina,18,17,15,13,27,Frutas,0
+chayote,NA,NA,1,NA,NA,Frutas,0
+chirimbache,NA,1,NA,NA,NA,Frutas,0
+chirimoyo,762,728,763,573,1005,Frutas,0
+chope,3,6,2,2,1,Frutas,0
+cidra,55,36,27,23,59,Frutas,0
+cirolero,292,245,259,157,174,Frutas,0
+ciruela agria,343,342,379,180,455,Frutas,0
+ciruela del fraile,16,48,22,23,54,Frutas,0
+copoazu,117,111,138,126,40,Frutas,0
+damasco,49,80,79,46,51,Frutas,0
+frambuesa,2,7,7,3,6,Frutas,0
+fresa,57,56,45,55,115,Frutas,0
+granadilla,504,415,414,227,243,Frutas,0
+granado,320,291,275,209,546,Frutas,0
+guanabano,298,259,281,201,380,Frutas,0
+guayabo,347,383,345,262,677,Frutas,0
+guindo,71,51,40,12,23,Frutas,0
+higuera,605,575,570,434,876,Frutas,0
+huasai,4,4,2,2,11,Frutas,0
+huito,2,NA,NA,NA,NA,Frutas,0
+humari,41,26,28,13,27,Frutas,0
+indano,1,NA,NA,NA,NA,Frutas,0
+lanche,2,NA,NA,NA,1,Frutas,0
+lima,702,666,819,531,678,Frutas,0
+limon dulce,343,291,212,181,210,Frutas,0
+limon mandarina,NA,1,1,2,NA,Frutas,0
+limon rugoso,530,607,452,289,303,Frutas,0
+lucumo,415,415,455,370,669,Frutas,0
+mamey,90,94,110,95,99,Frutas,0
+mandarina,983,866,898,682,1051,Frutas,0
+mango,2727,2528,2426,2178,2832,Frutas,0
+manzano,1541,1380,1560,919,1630,Frutas,0
+maracuya,252,221,182,167,312,Frutas,0
+marañon,46,24,24,14,22,Frutas,0
+melocotonero,1308,1175,1370,751,1188,Frutas,0
+melon,22,12,29,7,24,Frutas,0
+membrillero,428,309,331,198,336,Frutas,0
+nispero,388,313,372,199,539,Frutas,0
+pacae,2555,2258,2118,1757,2994,Frutas,0
+papaya,803,615,486,365,755,Frutas,0
+papayuela,68,25,35,33,26,Frutas,0
+pechiche,9,9,11,9,5,Frutas,0
+pepino fruta,55,35,19,23,33,Frutas,0
+pijuayo fruta,234,192,162,76,59,Frutas,0
+pitahaya,8,7,1,27,159,Frutas,0
+pitanga,NA,2,1,NA,NA,Frutas,0
+platano,7528,7358,7291,6725,6303,Frutas,0
+pomarrosa,170,123,92,76,107,Frutas,0
+pomelo,50,38,50,53,21,Frutas,0
+purush,11,1,1,2,NA,Frutas,0
+quito quito,6,4,6,1,3,Frutas,0
+sachatomate,240,239,187,107,118,Frutas,0
+sandia,157,124,111,78,118,Frutas,0
+sanky,NA,5,NA,NA,NA,Frutas,0
+sauco,78,88,149,82,57,Frutas,0
+tamarindo,111,124,114,90,143,Frutas,0
+tangelo,88,86,71,23,122,Frutas,0
+tangerina,40,19,8,2,51,Frutas,0
+taperiba,57,76,36,37,53,Frutas,0
+tumbo,229,157,194,82,106,Frutas,0
+tuna fruta,1166,1280,1128,661,1664,Frutas,0
+ungurahui,10,5,2,5,1,Frutas,0
+uvilla,45,23,18,9,22,Frutas,0
+uvos,1,3,NA,4,3,Frutas,0
+zapote,298,251,236,174,137,Frutas,0
+zarzamora,6,NA,3,6,28,Frutas,0
+acelga,65,87,85,32,42,"Hortalizas, legumbres y tubérculos",0
+achiote,152,267,265,156,140,"Hortalizas, legumbres y tubérculos",0
+ajenjo,5,9,1,3,3,"Hortalizas, legumbres y tubérculos",0
+aji,258,228,152,201,213,"Hortalizas, legumbres y tubérculos",0
+ajo,183,200,183,176,287,"Hortalizas, legumbres y tubérculos",0
+albahaca,22,33,18,20,12,"Hortalizas, legumbres y tubérculos",0
+alcachofa,70,69,59,38,73,"Hortalizas, legumbres y tubérculos",0
+alcaparra,NA,1,NA,NA,NA,"Hortalizas, legumbres y tubérculos",0
+apio,99,62,88,91,54,"Hortalizas, legumbres y tubérculos",0
+arracacha,85,93,84,86,61,"Hortalizas, legumbres y tubérculos",0
+arveja grano seco,804,846,746,605,957,"Hortalizas, legumbres y tubérculos",0
+arveja grano verde,779,665,661,742,911,"Hortalizas, legumbres y tubérculos",0
+arvejon grano seco,13,11,6,3,19,"Hortalizas, legumbres y tubérculos",0
+arvejon grano verde,38,27,34,23,24,"Hortalizas, legumbres y tubérculos",0
+berro,NA,NA,1,2,NA,"Hortalizas, legumbres y tubérculos",0
+betarraga,204,245,210,139,108,"Hortalizas, legumbres y tubérculos",0
+borraja,8,9,8,3,NA,"Hortalizas, legumbres y tubérculos",0
+brocoli,57,89,82,122,123,"Hortalizas, legumbres y tubérculos",0
+caigua,88,90,82,45,33,"Hortalizas, legumbres y tubérculos",0
+calabaza,1010,716,790,299,534,"Hortalizas, legumbres y tubérculos",0
+calabaza mate,2,NA,2,NA,NA,"Hortalizas, legumbres y tubérculos",0
+camote,392,387,393,419,419,"Hortalizas, legumbres y tubérculos",0
+canela,2,4,NA,1,2,"Hortalizas, legumbres y tubérculos",0
+cebolla china,406,453,303,310,267,"Hortalizas, legumbres y tubérculos",0
+cebollin,20,18,2,7,7,"Hortalizas, legumbres y tubérculos",0
+cedron,60,64,51,17,16,"Hortalizas, legumbres y tubérculos",0
+chincho,23,23,33,10,2,"Hortalizas, legumbres y tubérculos",0
+col,512,520,451,283,213,"Hortalizas, legumbres y tubérculos",0
+cola de caballo,NA,2,NA,NA,2,"Hortalizas, legumbres y tubérculos",0
+coliflor,57,56,55,54,47,"Hortalizas, legumbres y tubérculos",0
+culantro,326,328,375,306,186,"Hortalizas, legumbres y tubérculos",0
+dale dale,16,7,9,1,1,"Hortalizas, legumbres y tubérculos",0
+esparrago,262,325,283,154,381,"Hortalizas, legumbres y tubérculos",0
+espinaca,203,152,209,178,76,"Hortalizas, legumbres y tubérculos",0
+frijol alubia grano seco,7,7,7,1,3,"Hortalizas, legumbres y tubérculos",0
+frijol alubia grano verde,1,11,7,5,4,"Hortalizas, legumbres y tubérculos",0
+frijol ashpa grano seco,15,7,7,12,3,"Hortalizas, legumbres y tubérculos",0
+frijol ashpa grano verde,5,8,7,8,3,"Hortalizas, legumbres y tubérculos",0
+frijol aston grano seco,NA,NA,NA,1,1,"Hortalizas, legumbres y tubérculos",0
+frijol aston grano verde,NA,NA,1,NA,NA,"Hortalizas, legumbres y tubérculos",0
+frijol bayo grano seco,102,80,129,76,77,"Hortalizas, legumbres y tubérculos",0
+frijol bayo grano verde,38,69,36,45,18,"Hortalizas, legumbres y tubérculos",0
+frijol blanco grano seco,197,172,216,144,178,"Hortalizas, legumbres y tubérculos",0
+frijol blanco grano verde,45,44,38,60,34,"Hortalizas, legumbres y tubérculos",0
+frijol caballero grano seco,146,245,234,64,92,"Hortalizas, legumbres y tubérculos",0
+frijol caballero grano verde,14,6,13,14,6,"Hortalizas, legumbres y tubérculos",0
+frijol cambio noventa grano seco,17,26,11,1,3,"Hortalizas, legumbres y tubérculos",0
+frijol cambio noventa grano verde,8,15,10,1,6,"Hortalizas, legumbres y tubérculos",0
+frijol canario grano seco,268,294,237,152,340,"Hortalizas, legumbres y tubérculos",0
+frijol canario grano verde,27,23,26,58,34,"Hortalizas, legumbres y tubérculos",0
+frijol caupi grano seco,82,76,85,76,112,"Hortalizas, legumbres y tubérculos",0
+frijol caupi grano verde,29,33,22,18,49,"Hortalizas, legumbres y tubérculos",0
+frijol chaucha grano seco,22,18,17,22,42,"Hortalizas, legumbres y tubérculos",0
+frijol chaucha grano verde,47,24,32,30,14,"Hortalizas, legumbres y tubérculos",0
+frijol chiclayo verdura grano seco,35,20,11,15,9,"Hortalizas, legumbres y tubérculos",0
+frijol chiclayo verdura grano verde,9,7,9,9,10,"Hortalizas, legumbres y tubérculos",0
+frijol chonteño,NA,NA,NA,NA,1,"Hortalizas, legumbres y tubérculos",0
+frijol de palo grano seco,128,89,80,51,76,"Hortalizas, legumbres y tubérculos",0
+frijol de palo grano verde,236,207,219,108,125,"Hortalizas, legumbres y tubérculos",0
+frijol guinda grano seco,80,63,31,43,98,"Hortalizas, legumbres y tubérculos",0
+frijol guinda grano verde,9,5,7,4,NA,"Hortalizas, legumbres y tubérculos",0
+frijol habitas grano seco,7,8,6,3,1,"Hortalizas, legumbres y tubérculos",0
+frijol habitas grano verde,3,3,4,4,NA,"Hortalizas, legumbres y tubérculos",0
+frijol huasca grano seco,25,36,20,7,20,"Hortalizas, legumbres y tubérculos",0
+frijol huasca grano verde,17,17,14,14,7,"Hortalizas, legumbres y tubérculos",0
+frijol huasca poroto grano seco,12,16,56,20,16,"Hortalizas, legumbres y tubérculos",0
+frijol huasca poroto grano verde,8,14,3,20,1,"Hortalizas, legumbres y tubérculos",0
+frijol huevo de paloma grano seco,41,25,8,11,18,"Hortalizas, legumbres y tubérculos",0
+frijol huevo de paloma grano verde,NA,1,NA,NA,3,"Hortalizas, legumbres y tubérculos",0
+frijol jacinto grano seco,NA,1,3,NA,NA,"Hortalizas, legumbres y tubérculos",0
+frijol jacinto grano verde,NA,1,NA,NA,NA,"Hortalizas, legumbres y tubérculos",0
+frijol lantreja grano seco,38,16,12,23,7,"Hortalizas, legumbres y tubérculos",0
+frijol lantreja grano verde,41,37,24,8,22,"Hortalizas, legumbres y tubérculos",0
+frijol laran grano verde,NA,NA,3,NA,1,"Hortalizas, legumbres y tubérculos",0
+frijol leche grano seco,NA,NA,3,NA,2,"Hortalizas, legumbres y tubérculos",0
+frijol leche grano verde,2,NA,1,NA,1,"Hortalizas, legumbres y tubérculos",0
+frijol loctao grano seco,8,2,2,9,2,"Hortalizas, legumbres y tubérculos",0
+frijol loctao grano verde,2,1,1,7,3,"Hortalizas, legumbres y tubérculos",0
+frijol manteca grano seco,NA,NA,NA,NA,5,"Hortalizas, legumbres y tubérculos",0
+frijol negro grano seco,1,3,2,6,2,"Hortalizas, legumbres y tubérculos",0
+frijol negro grano verde,5,6,3,4,1,"Hortalizas, legumbres y tubérculos",0
+frijol pajatino grano seco,2,NA,1,1,NA,"Hortalizas, legumbres y tubérculos",0
+frijol pajatino grano verde,2,1,NA,NA,NA,"Hortalizas, legumbres y tubérculos",0
+frijol paloma grano seco,4,7,2,9,6,"Hortalizas, legumbres y tubérculos",0
+frijol paloma grano verde,3,4,NA,3,2,"Hortalizas, legumbres y tubérculos",0
+frijol panamito grano seco,161,135,92,86,124,"Hortalizas, legumbres y tubérculos",0
+frijol panamito grano verde,17,21,27,20,7,"Hortalizas, legumbres y tubérculos",0
+frijol pinto grano seco,287,291,250,171,162,"Hortalizas, legumbres y tubérculos",0
+frijol pinto grano verde,57,76,70,74,48,"Hortalizas, legumbres y tubérculos",0
+frijol pucallpino grano seco,NA,1,1,2,NA,"Hortalizas, legumbres y tubérculos",0
+frijol pucallpino grano verde,NA,2,1,1,NA,"Hortalizas, legumbres y tubérculos",0
+frijol rayado grano seco,21,3,7,3,12,"Hortalizas, legumbres y tubérculos",0
+frijol rayado grano verde,3,1,4,1,NA,"Hortalizas, legumbres y tubérculos",0
+frijol red kidney grano seco,1,3,1,2,10,"Hortalizas, legumbres y tubérculos",0
+frijol red kidney grano verde,1,1,2,1,NA,"Hortalizas, legumbres y tubérculos",0
+frijol regional grano seco,34,28,15,20,7,"Hortalizas, legumbres y tubérculos",0
+frijol regional grano verde,8,1,NA,1,1,"Hortalizas, legumbres y tubérculos",0
+frijol rociño grano seco,3,2,2,3,NA,"Hortalizas, legumbres y tubérculos",0
+frijol rociño grano verde,NA,NA,5,1,NA,"Hortalizas, legumbres y tubérculos",0
+frijol rundo grano seco,11,19,15,9,2,"Hortalizas, legumbres y tubérculos",0
+frijol rundo grano verde,2,NA,1,NA,NA,"Hortalizas, legumbres y tubérculos",0
+frijol san jacinto grano seco,1,4,1,NA,NA,"Hortalizas, legumbres y tubérculos",0
+frijol san jacinto grano verde,NA,1,NA,NA,NA,"Hortalizas, legumbres y tubérculos",0
+frijol sangre de toro grano seco,8,7,2,2,17,"Hortalizas, legumbres y tubérculos",0
+frijol sangre de toro grano verde,4,2,1,NA,NA,"Hortalizas, legumbres y tubérculos",0
+frijol shinguito grano seco,4,2,2,6,1,"Hortalizas, legumbres y tubérculos",0
+frijol shinguito grano verde,5,3,2,4,1,"Hortalizas, legumbres y tubérculos",0
+frijol toda la vida grano seco,11,23,12,8,7,"Hortalizas, legumbres y tubérculos",0
+frijol toda la vida grano verde,15,11,27,14,8,"Hortalizas, legumbres y tubérculos",0
+frijol ucayalino grano seco,24,27,9,9,10,"Hortalizas, legumbres y tubérculos",0
+frijol ucayalino grano verde,2,3,1,4,NA,"Hortalizas, legumbres y tubérculos",0
+garbanzo grano seco,7,7,10,4,30,"Hortalizas, legumbres y tubérculos",0
+garbanzo grano verde,3,9,5,1,2,"Hortalizas, legumbres y tubérculos",0
+haba grano seco,2129,2490,2419,2108,3454,"Hortalizas, legumbres y tubérculos",0
+haba grano verde,1137,894,993,824,1059,"Hortalizas, legumbres y tubérculos",0
+hierba buena,74,98,86,82,21,"Hortalizas, legumbres y tubérculos",0
+hierba luisa,23,42,7,22,24,"Hortalizas, legumbres y tubérculos",0
+hinojo,37,33,46,13,21,"Hortalizas, legumbres y tubérculos",0
+hiperico,NA,NA,NA,NA,1,"Hortalizas, legumbres y tubérculos",0
+holantao,4,8,11,9,61,"Hortalizas, legumbres y tubérculos",0
+huacatay,35,54,65,40,14,"Hortalizas, legumbres y tubérculos",0
+jalapena,1,NA,2,NA,NA,"Hortalizas, legumbres y tubérculos",0
+jalapeña,NA,NA,NA,NA,1,"Hortalizas, legumbres y tubérculos",0
+kion,21,12,11,21,17,"Hortalizas, legumbres y tubérculos",0
+lechuga,498,576,597,395,277,"Hortalizas, legumbres y tubérculos",0
+lenteja grano seco,104,128,109,114,178,"Hortalizas, legumbres y tubérculos",0
+lenteja grano verde,27,42,20,61,10,"Hortalizas, legumbres y tubérculos",0
+llanten,1,2,NA,1,2,"Hortalizas, legumbres y tubérculos",0
+manzanilla,99,104,88,39,18,"Hortalizas, legumbres y tubérculos",0
+mashua,448,420,415,278,497,"Hortalizas, legumbres y tubérculos",0
+menta,12,11,14,4,5,"Hortalizas, legumbres y tubérculos",0
+muña,6,15,18,2,3,"Hortalizas, legumbres y tubérculos",0
+nabo,26,30,39,26,11,"Hortalizas, legumbres y tubérculos",0
+nuña grano seco,176,160,154,109,162,"Hortalizas, legumbres y tubérculos",0
+nuña grano verde,NA,1,2,NA,1,"Hortalizas, legumbres y tubérculos",0
+oca,1006,946,967,809,1600,"Hortalizas, legumbres y tubérculos",0
+olluco,929,792,877,667,1429,"Hortalizas, legumbres y tubérculos",0
+oregano,703,626,672,364,361,"Hortalizas, legumbres y tubérculos",0
+pajuro,125,132,99,88,68,"Hortalizas, legumbres y tubérculos",0
+pak choy,1,NA,NA,NA,2,"Hortalizas, legumbres y tubérculos",0
+palillo,16,14,20,34,16,"Hortalizas, legumbres y tubérculos",0
+pallar grano seco,97,154,92,122,217,"Hortalizas, legumbres y tubérculos",0
+pallar grano verde,53,48,63,66,47,"Hortalizas, legumbres y tubérculos",0
+panisara,1,NA,NA,NA,NA,"Hortalizas, legumbres y tubérculos",0
+panizara,NA,NA,NA,1,NA,"Hortalizas, legumbres y tubérculos",0
+papa amarga,194,256,378,272,370,"Hortalizas, legumbres y tubérculos",0
+papa amarilla,762,622,690,690,1106,"Hortalizas, legumbres y tubérculos",0
+papa color,1218,1003,1034,650,942,"Hortalizas, legumbres y tubérculos",0
+papa huayro,520,466,446,516,847,"Hortalizas, legumbres y tubérculos",0
+papa nativa,2679,3030,3180,2874,6354,"Hortalizas, legumbres y tubérculos",0
+paprika,29,43,21,18,135,"Hortalizas, legumbres y tubérculos",0
+pepinillo,64,89,58,49,50,"Hortalizas, legumbres y tubérculos",0
+perejil,191,149,160,128,61,"Hortalizas, legumbres y tubérculos",0
+pimienta,1,3,5,6,NA,"Hortalizas, legumbres y tubérculos",0
+pimiento,43,60,35,9,60,"Hortalizas, legumbres y tubérculos",0
+piquillo,3,6,6,NA,9,"Hortalizas, legumbres y tubérculos",0
+pituca,337,284,271,188,104,"Hortalizas, legumbres y tubérculos",0
+poro,37,37,30,47,27,"Hortalizas, legumbres y tubérculos",0
+rabano,52,83,104,36,8,"Hortalizas, legumbres y tubérculos",0
+rocoto,411,424,436,246,173,"Hortalizas, legumbres y tubérculos",0
+romero,15,19,23,22,46,"Hortalizas, legumbres y tubérculos",0
+sacha col,NA,NA,NA,1,NA,"Hortalizas, legumbres y tubérculos",0
+sachaculantro,38,23,9,17,7,"Hortalizas, legumbres y tubérculos",0
+sachapapa,68,75,80,34,3,"Hortalizas, legumbres y tubérculos",0
+salvia,NA,12,NA,NA,NA,"Hortalizas, legumbres y tubérculos",0
+santa maria,NA,NA,NA,1,NA,"Hortalizas, legumbres y tubérculos",0
+tarhui grano seco,329,206,202,286,662,"Hortalizas, legumbres y tubérculos",0
+tarhui grano verde,9,12,5,10,11,"Hortalizas, legumbres y tubérculos",0
+tomillo,3,2,4,2,2,"Hortalizas, legumbres y tubérculos",0
+toronjil,30,31,21,14,14,"Hortalizas, legumbres y tubérculos",0
+uncucha,53,94,130,58,16,"Hortalizas, legumbres y tubérculos",0
+vainita,98,113,67,52,114,"Hortalizas, legumbres y tubérculos",0
+valeriana,NA,NA,NA,NA,1,"Hortalizas, legumbres y tubérculos",0
+vicia grano seco,6,3,2,9,3,"Hortalizas, legumbres y tubérculos",0
+vicia grano verde,10,12,6,2,5,"Hortalizas, legumbres y tubérculos",0
+yacon,31,30,23,8,11,"Hortalizas, legumbres y tubérculos",0
+yuca,2865,2711,2415,2121,1233,"Hortalizas, legumbres y tubérculos",0
+zambumba,6,20,8,7,NA,"Hortalizas, legumbres y tubérculos",0
+zanahoria,411,368,380,293,259,"Hortalizas, legumbres y tubérculos",0
+zapallo,242,220,202,207,310,"Hortalizas, legumbres y tubérculos",0
+zapallo italiano,17,20,18,10,10,"Hortalizas, legumbres y tubérculos",0
+zarandaja grano seco,30,27,31,36,70,"Hortalizas, legumbres y tubérculos",0
+zarandaja grano verde,77,57,51,39,57,"Hortalizas, legumbres y tubérculos",0
+acerola,1,2,1,NA,2,No alimentario / Excluir,0
+achicoria forrajera,NA,NA,NA,NA,8,No alimentario / Excluir,0
+achira,12,12,7,4,9,No alimentario / Excluir,0
+agapanto,NA,NA,NA,6,3,No alimentario / Excluir,0
+aguaturma,NA,3,NA,NA,NA,No alimentario / Excluir,0
+airampo,NA,NA,NA,1,1,No alimentario / Excluir,0
+alfalfa,7359,7450,7526,6525,13551,No alimentario / Excluir,0
+algodon,106,172,243,177,257,No alimentario / Excluir,0
+almizcle vegetal,1,NA,NA,1,NA,No alimentario / Excluir,0
+anis,9,8,3,10,6,No alimentario / Excluir,0
+astromelia,NA,NA,NA,NA,8,No alimentario / Excluir,0
+astromeria,NA,5,NA,5,NA,No alimentario / Excluir,0
+avena forrajera,2186,1958,2343,2012,6882,No alimentario / Excluir,0
+azafran,2,1,1,3,1,No alimentario / Excluir,0
+azucena,NA,NA,NA,2,8,No alimentario / Excluir,0
+berenjena,29,30,23,20,5,No alimentario / Excluir,0
+boton de oro,NA,NA,NA,NA,1,No alimentario / Excluir,0
+buganvilia,NA,NA,NA,NA,1,No alimentario / Excluir,0
+camote forrajero,2,2,2,1,2,No alimentario / Excluir,0
+cansaboca,9,8,4,NA,NA,No alimentario / Excluir,0
+cartucho,NA,NA,NA,1,1,No alimentario / Excluir,0
+casharana,2,3,2,1,2,No alimentario / Excluir,0
+caña brava,18,13,11,NA,17,No alimentario / Excluir,0
+caña de azucar para alcohol,42,82,49,61,83,No alimentario / Excluir,0
+caña de azucar para azucar,392,431,505,122,408,No alimentario / Excluir,0
+caña de azucar para chancaca,152,164,179,217,162,No alimentario / Excluir,0
+caña de azucar para etanol,6,8,7,NA,17,No alimentario / Excluir,0
+caña de azucar para fruta,312,246,217,132,102,No alimentario / Excluir,0
+caña guayaquil,27,42,39,NA,66,No alimentario / Excluir,0
+cebada forrajera,592,356,524,431,816,No alimentario / Excluir,0
+centeno forrajero,4,2,3,8,7,No alimentario / Excluir,0
+centrosema,NA,NA,1,NA,NA,No alimentario / Excluir,0
+cerezo,45,22,30,25,33,No alimentario / Excluir,0
+chambira,2,3,1,1,NA,No alimentario / Excluir,0
+charichuelo,7,3,1,NA,NA,No alimentario / Excluir,0
+clavel,5,5,2,4,25,No alimentario / Excluir,0
+coca,505,528,423,481,573,No alimentario / Excluir,0
+cocona,143,100,92,67,43,No alimentario / Excluir,0
+cocotero,554,539,483,323,611,No alimentario / Excluir,0
+col forrajera,NA,NA,1,NA,NA,No alimentario / Excluir,0
+colza,2,NA,NA,NA,NA,No alimentario / Excluir,0
+congona,2,3,6,5,8,No alimentario / Excluir,0
+crisantemo,11,NA,NA,NA,NA,No alimentario / Excluir,0
+crisantemo o pompon,NA,NA,NA,9,8,No alimentario / Excluir,0
+crotalaria,NA,1,2,NA,NA,No alimentario / Excluir,0
+cube,9,1,NA,9,14,No alimentario / Excluir,0
+dalia,NA,NA,NA,1,NA,No alimentario / Excluir,0
+flor agapanto,NA,2,NA,NA,NA,No alimentario / Excluir,0
+flor alheli,NA,NA,3,1,NA,No alimentario / Excluir,0
+flor amarilis,5,NA,NA,NA,NA,No alimentario / Excluir,0
+flor astromelia,1,NA,NA,NA,NA,No alimentario / Excluir,0
+flor astromeria,NA,NA,3,NA,NA,No alimentario / Excluir,0
+flor cartucho,NA,6,NA,1,NA,No alimentario / Excluir,0
+flor caspia,2,NA,NA,NA,NA,No alimentario / Excluir,0
+flor crisantemo,NA,3,4,NA,NA,No alimentario / Excluir,0
+flor de jamaica,1,NA,NA,NA,1,No alimentario / Excluir,0
+flor gladiolo,NA,12,14,NA,NA,No alimentario / Excluir,0
+flor godetia,NA,1,NA,NA,NA,No alimentario / Excluir,0
+flor gypsophila,NA,1,NA,NA,NA,No alimentario / Excluir,0
+flor hortencia,1,NA,NA,NA,NA,No alimentario / Excluir,0
+flor ilusion,7,NA,NA,NA,NA,No alimentario / Excluir,0
+flor lilium,NA,2,NA,NA,NA,No alimentario / Excluir,0
+flor lirio,NA,2,NA,NA,NA,No alimentario / Excluir,0
+flor margarita,1,NA,1,NA,NA,No alimentario / Excluir,0
+flor nardo,NA,NA,1,NA,NA,No alimentario / Excluir,0
+flor pimpinela,3,NA,1,NA,NA,No alimentario / Excluir,0
+flor pompom,12,NA,NA,NA,NA,No alimentario / Excluir,0
+flor pompon,NA,NA,1,NA,NA,No alimentario / Excluir,0
+flor siempre viva,NA,1,NA,NA,NA,No alimentario / Excluir,0
+flor siempreviva,1,NA,NA,NA,NA,No alimentario / Excluir,0
+flor statice,1,1,1,NA,NA,No alimentario / Excluir,0
+flor velo de novia,NA,NA,1,NA,NA,No alimentario / Excluir,0
+flores de corte,168,127,90,39,37,No alimentario / Excluir,0
+gerbera,NA,NA,NA,NA,6,No alimentario / Excluir,0
+girasol,4,NA,NA,NA,NA,No alimentario / Excluir,0
+girasol forrajero,NA,NA,NA,2,21,No alimentario / Excluir,0
+girasol para semilla,NA,1,NA,1,10,No alimentario / Excluir,0
+gladiolo,4,NA,NA,16,13,No alimentario / Excluir,0
+godethia,NA,NA,NA,7,NA,No alimentario / Excluir,0
+haba forrajera,17,9,7,29,19,No alimentario / Excluir,0
+higuerilla,NA,NA,NA,1,5,No alimentario / Excluir,0
+hortencia,NA,NA,NA,1,1,No alimentario / Excluir,0
+ichu costeño,NA,1,NA,NA,2,No alimentario / Excluir,0
+ilusion,NA,NA,NA,4,3,No alimentario / Excluir,0
+jojoba,3,2,5,NA,9,No alimentario / Excluir,0
+lagrimas de virgen,NA,NA,NA,3,NA,No alimentario / Excluir,0
+lancetilla,NA,NA,NA,2,NA,No alimentario / Excluir,0
+laricaro,NA,NA,2,NA,2,No alimentario / Excluir,0
+laurel,6,5,8,8,15,No alimentario / Excluir,0
+lengua de vaca forrajera,NA,NA,NA,NA,10,No alimentario / Excluir,0
+linaza,88,83,40,60,75,No alimentario / Excluir,0
+lirio,NA,NA,NA,NA,7,No alimentario / Excluir,0
+lluvia de oro,NA,NA,NA,4,NA,No alimentario / Excluir,0
+lufa,NA,1,NA,NA,NA,No alimentario / Excluir,0
+macambo,25,25,14,5,12,No alimentario / Excluir,0
+maiz chala,1206,1452,1398,1084,1660,No alimentario / Excluir,0
+malva,1,2,NA,3,2,No alimentario / Excluir,0
+margarita days,NA,NA,NA,1,NA,No alimentario / Excluir,0
+margarita vara,NA,NA,NA,NA,4,No alimentario / Excluir,0
+marigold,3,NA,1,NA,NA,No alimentario / Excluir,0
+matico,8,4,3,8,8,No alimentario / Excluir,0
+mauna,NA,4,3,1,NA,No alimentario / Excluir,0
+max flower,NA,NA,NA,NA,4,No alimentario / Excluir,0
+mejorana,41,43,46,21,19,No alimentario / Excluir,0
+mirto,NA,NA,NA,NA,3,No alimentario / Excluir,0
+montecasino,NA,NA,NA,NA,7,No alimentario / Excluir,0
+morera,62,67,76,83,65,No alimentario / Excluir,0
+moringa,7,9,9,3,23,No alimentario / Excluir,0
+mote mote,2,1,4,11,17,No alimentario / Excluir,0
+mucuna forrajera,2,NA,NA,NA,NA,No alimentario / Excluir,0
+nardo,NA,NA,NA,1,NA,No alimentario / Excluir,0
+noni,38,37,23,16,33,No alimentario / Excluir,0
+overal,NA,NA,NA,1,NA,No alimentario / Excluir,0
+paico,2,8,NA,2,NA,No alimentario / Excluir,0
+palma aceitera,113,175,202,158,303,No alimentario / Excluir,0
+palmera datilera,23,19,11,16,48,No alimentario / Excluir,0
+palto,3626,3635,3676,3240,5607,No alimentario / Excluir,0
+papelillo,NA,NA,NA,1,NA,No alimentario / Excluir,0
+parinari,2,NA,NA,NA,NA,No alimentario / Excluir,0
+pasto agashul,4,6,9,49,21,No alimentario / Excluir,0
+pasto aleman,NA,NA,1,NA,NA,No alimentario / Excluir,0
+pasto angleton,99,99,151,168,389,No alimentario / Excluir,0
+pasto arrocillo,NA,1,NA,NA,NA,No alimentario / Excluir,0
+pasto bahia,NA,NA,2,NA,NA,No alimentario / Excluir,0
+pasto banderilla,NA,NA,NA,NA,1,No alimentario / Excluir,0
+pasto bequeron,NA,1,NA,NA,NA,No alimentario / Excluir,0
+pasto bermuda,3,2,NA,NA,2,No alimentario / Excluir,0
+pasto blanco,1,14,4,22,33,No alimentario / Excluir,0
+pasto bombasa,2,NA,NA,NA,NA,No alimentario / Excluir,0
+pasto bombaza,NA,NA,NA,1,NA,No alimentario / Excluir,0
+pasto boqueron,4,NA,NA,NA,NA,No alimentario / Excluir,0
+pasto braquearia,865,789,745,514,NA,No alimentario / Excluir,0
+pasto braquiaria,NA,NA,NA,NA,1144,No alimentario / Excluir,0
+pasto brizanta,742,795,700,490,1373,No alimentario / Excluir,0
+pasto camerun,14,19,23,13,35,No alimentario / Excluir,0
+pasto carricillo,5,8,4,7,15,No alimentario / Excluir,0
+pasto castilla,19,12,8,23,13,No alimentario / Excluir,0
+pasto cebadilla,40,27,35,7,34,No alimentario / Excluir,0
+pasto chileno,24,12,11,24,59,No alimentario / Excluir,0
+pasto chilligua,NA,NA,3,11,7,No alimentario / Excluir,0
+pasto chiriro,NA,NA,1,NA,NA,No alimentario / Excluir,0
+pasto chiñiclos,1,NA,NA,NA,NA,No alimentario / Excluir,0
+pasto chonteña,1,NA,NA,NA,NA,No alimentario / Excluir,0
+pasto colcha,28,27,31,5,26,No alimentario / Excluir,0
+pasto colombiano,NA,11,11,NA,NA,No alimentario / Excluir,0
+pasto colonial,NA,NA,NA,1,1,No alimentario / Excluir,0
+pasto crespillo,NA,NA,NA,NA,1,No alimentario / Excluir,0
+pasto cuba,NA,NA,NA,1,NA,No alimentario / Excluir,0
+pasto cuba veintidos,NA,NA,NA,NA,31,No alimentario / Excluir,0
+pasto cuna del niño,1,2,7,4,10,No alimentario / Excluir,0
+pasto dactilys,364,413,498,362,NA,No alimentario / Excluir,0
+pasto dactylis,NA,NA,NA,NA,1997,No alimentario / Excluir,0
+pasto de agua,NA,1,NA,NA,NA,No alimentario / Excluir,0
+pasto desmondium,NA,NA,1,NA,NA,No alimentario / Excluir,0
+pasto elefante,469,350,444,404,717,No alimentario / Excluir,0
+pasto estrella,10,16,16,20,30,No alimentario / Excluir,0
+pasto falaris,144,118,190,35,119,No alimentario / Excluir,0
+pasto festuca,6,21,35,8,77,No alimentario / Excluir,0
+pasto gateadora,11,3,20,14,8,No alimentario / Excluir,0
+pasto genaira,NA,NA,NA,NA,1,No alimentario / Excluir,0
+pasto gordura,1,NA,NA,NA,NA,No alimentario / Excluir,0
+pasto grama azul,113,155,192,154,294,No alimentario / Excluir,0
+pasto grama blanca,26,14,29,78,117,No alimentario / Excluir,0
+pasto grama chilena,92,64,55,53,275,No alimentario / Excluir,0
+pasto grama china,2,NA,NA,NA,NA,No alimentario / Excluir,0
+pasto grama dulce,120,309,326,134,96,No alimentario / Excluir,0
+pasto grama rhodes,NA,NA,NA,NA,5,No alimentario / Excluir,0
+pasto grama salada,2,NA,NA,NA,2,No alimentario / Excluir,0
+pasto gramalote,162,172,142,107,220,No alimentario / Excluir,0
+pasto guatemala,104,42,102,82,60,No alimentario / Excluir,0
+pasto guinea,1,5,3,4,4,No alimentario / Excluir,0
+pasto huaquillo,NA,NA,NA,NA,2,No alimentario / Excluir,0
+pasto humidicola,NA,NA,1,NA,NA,No alimentario / Excluir,0
+pasto ingles,NA,NA,2,NA,NA,No alimentario / Excluir,0
+pasto jasmin,NA,NA,1,NA,NA,No alimentario / Excluir,0
+pasto jazmin,1,1,NA,NA,NA,No alimentario / Excluir,0
+pasto kikuyo,385,445,319,442,2027,No alimentario / Excluir,0
+pasto king grass,57,72,67,47,39,No alimentario / Excluir,0
+pasto kudzu,34,9,29,4,8,No alimentario / Excluir,0
+pasto leucaena,NA,1,NA,NA,NA,No alimentario / Excluir,0
+pasto maicillo,40,70,86,38,97,No alimentario / Excluir,0
+pasto marafalfa,21,44,58,41,96,No alimentario / Excluir,0
+pasto melqueron,NA,NA,NA,1,NA,No alimentario / Excluir,0
+pasto mombaza,1,NA,NA,NA,NA,No alimentario / Excluir,0
+pasto morado,17,9,10,3,57,No alimentario / Excluir,0
+pasto morropon,NA,NA,NA,NA,1,No alimentario / Excluir,0
+pasto natural manejado,679,766,869,588,809,No alimentario / Excluir,0
+pasto negro,NA,NA,5,NA,NA,No alimentario / Excluir,0
+pasto nicarion,NA,NA,NA,NA,1,No alimentario / Excluir,0
+pasto nudillo,42,55,37,47,100,No alimentario / Excluir,0
+pasto oliva,4,8,6,19,13,No alimentario / Excluir,0
+pasto oloroso,NA,4,NA,NA,NA,No alimentario / Excluir,0
+pasto ovillo,58,61,15,29,187,No alimentario / Excluir,0
+pasto paja,4,64,46,10,32,No alimentario / Excluir,0
+pasto paja clasica,1,NA,NA,NA,3,No alimentario / Excluir,0
+pasto paja de corte,4,3,23,11,2,No alimentario / Excluir,0
+pasto paja lima,25,12,25,26,19,No alimentario / Excluir,0
+pasto pajilla,NA,1,8,3,58,No alimentario / Excluir,0
+pasto pangola,4,1,3,1,NA,No alimentario / Excluir,0
+pasto para,7,NA,NA,2,13,No alimentario / Excluir,0
+pasto paspal,6,2,20,3,5,No alimentario / Excluir,0
+pasto perecinta,NA,NA,NA,NA,1,No alimentario / Excluir,0
+pasto piosin,NA,1,9,NA,NA,No alimentario / Excluir,0
+pasto piri piri,1,NA,NA,NA,NA,No alimentario / Excluir,0
+pasto puntero,NA,NA,2,NA,NA,No alimentario / Excluir,0
+pasto rabo de zorro,NA,NA,1,1,NA,No alimentario / Excluir,0
+pasto rhodes,2,NA,4,NA,NA,No alimentario / Excluir,0
+pasto sara sara,7,7,13,1,NA,No alimentario / Excluir,0
+pasto setarea,47,40,57,8,83,No alimentario / Excluir,0
+pasto siso,9,23,20,31,30,No alimentario / Excluir,0
+pasto sotuchi,NA,3,NA,NA,NA,No alimentario / Excluir,0
+pasto stylo,NA,NA,NA,NA,2,No alimentario / Excluir,0
+pasto sucre,NA,NA,1,NA,NA,No alimentario / Excluir,0
+pasto sudan,7,21,9,8,16,No alimentario / Excluir,0
+pasto suncho,NA,NA,NA,NA,3,No alimentario / Excluir,0
+pasto taiwan,NA,NA,NA,NA,1,No alimentario / Excluir,0
+pasto tanzania,5,19,5,1,5,No alimentario / Excluir,0
+pasto tifton,1,NA,NA,NA,NA,No alimentario / Excluir,0
+pasto tingalesa,NA,NA,3,NA,NA,No alimentario / Excluir,0
+pasto tiocinto,NA,4,NA,1,3,No alimentario / Excluir,0
+pasto toro urco,44,40,50,14,59,No alimentario / Excluir,0
+pasto yaragua,4,2,13,NA,4,No alimentario / Excluir,0
+pasto yarave,NA,NA,1,NA,NA,No alimentario / Excluir,0
+pasto zacate,23,58,32,11,38,No alimentario / Excluir,0
+penca maguey,NA,NA,NA,NA,1,No alimentario / Excluir,0
+peral,361,356,391,292,357,No alimentario / Excluir,0
+pijuayo palmito,12,11,6,10,34,No alimentario / Excluir,0
+piña,414,342,335,233,134,No alimentario / Excluir,0
+piñon blanco,NA,1,1,NA,NA,No alimentario / Excluir,0
+rosa,4,4,5,13,12,No alimentario / Excluir,0
+ruda,90,81,76,67,39,No alimentario / Excluir,0
+rye americano,10,19,16,5,44,No alimentario / Excluir,0
+rye grass,2380,2588,2499,2446,5531,No alimentario / Excluir,0
+sabila,4,5,10,8,13,No alimentario / Excluir,0
+sachamango,12,16,10,1,1,No alimentario / Excluir,0
+shapaja,16,3,2,NA,11,No alimentario / Excluir,0
+shicashica,NA,NA,NA,1,2,No alimentario / Excluir,0
+sicua,NA,NA,NA,3,NA,No alimentario / Excluir,0
+siempre viva,NA,NA,NA,3,NA,No alimentario / Excluir,0
+sinamillo,5,2,NA,3,NA,No alimentario / Excluir,0
+sorgo escobero,5,4,8,1,10,No alimentario / Excluir,0
+sorgo forrajero,61,62,71,46,49,No alimentario / Excluir,0
+soya,11,12,23,23,11,No alimentario / Excluir,0
+stevia,5,5,6,NA,1,No alimentario / Excluir,0
+tabaco,3,9,15,12,1,No alimentario / Excluir,0
+tara,623,565,536,546,1271,No alimentario / Excluir,0
+tomate,146,141,111,102,160,No alimentario / Excluir,0
+toquilla,1,NA,NA,NA,NA,No alimentario / Excluir,0
+toronja,289,219,204,130,149,No alimentario / Excluir,0
+trebol,1021,1030,1122,1086,2801,No alimentario / Excluir,0
+vainilla,NA,NA,NA,NA,3,No alimentario / Excluir,0
+vicia forrajera,5,13,15,NA,1,No alimentario / Excluir,0
+vid,1170,1206,1085,827,1024,No alimentario / Excluir,0
+yarina,3,NA,NA,NA,NA,No alimentario / Excluir,0
+yunya grano verde,NA,NA,NA,1,NA,No alimentario / Excluir,0
+arroz cascara,3052,3071,2721,2945,3828,Pan y cereales,0
+avena grano,152,144,212,328,1129,Pan y cereales,0
+cañihua,154,106,153,95,431,Pan y cereales,0
+cebada grano,2185,2074,1966,1988,3607,Pan y cereales,0
+centeno grano,6,4,5,6,15,Pan y cereales,0
+chia,14,6,1,19,29,Pan y cereales,0
+kanyu,NA,NA,NA,1,NA,Pan y cereales,0
+kiwicha,43,37,46,55,30,Pan y cereales,0
+maca,41,22,6,23,18,Pan y cereales,0
+maiz amilaceo,9160,9682,9579,8451,12458,Pan y cereales,0
+maiz choclo,1550,1514,1570,1654,1767,Pan y cereales,0
+maiz morado,307,252,189,162,387,Pan y cereales,0
+trigo,2249,2272,1857,2195,3606,Pan y cereales,0
