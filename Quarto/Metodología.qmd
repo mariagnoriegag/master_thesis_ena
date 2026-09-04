@@ -61,16 +61,17 @@ Por distrito:\
 **6. Poblacion (Proyectada para los Años Pre: 2017, 2022, 2023)\
 7. N Mercados Preexistentes (ENA Años Pre: 2017, 2022, 2023)\
 8. (NUEVO) N Agricultores (utilizando datos del Censo Agropecuario 2012 como proxy)\
-9. (NUEVO) % Mercado Mayorista o Mixto (ENA Años Pre: 2017, 2022, 2023)**\
-10. (NUEVO) Superficie cosechada suma agregada (ENA Años Pre: 2017, 2022, 2023)\
-10. (NUEVO) % Superficie total UAs o cosechado (ENA Años Pre: 2017, 2022, 2023)\
-11. (NUEVO) Varianza % Superficie total UAs o cosechado (ENA Años Pre: 2017, 2022, 2023)\
-**12. Superficie KM2 (fijo del distrito)\
-13. Altitud (fijo del distrito)**\
+9. (NUEVO) % Mercado Mayorista o Mixto (ENA Años Pre: 2017, 2022, 2023)\
+10. Superficie KM2 (fijo del distrito)\
+11. Altitud (fijo del distrito)**\
+12. (NUEVO) Superficie cosechada suma agregada (ENA Años Pre: 2017, 2022, 2023)\
+13. (NUEVO) % Superficie total UAs o cosechado (ENA Años Pre: 2017, 2022, 2023)\
+14. (NUEVO) Varianza % Superficie total UAs o cosechado (ENA Años Pre: 2017, 2022, 2023)\
+\
 \
 Por departamento:\
-14. % de Pavimentación vecinal\
-15. (NUEVO) PBI / VAB agricultura\
+**15. % de Pavimentación vecinal\
+16. VPB agricultura**\
 
 **Tarea 1: Verificar el "Top 3" de Cultivos en las Provincias de Interés\
 **Verificar si estos cultivos tienen presencia y son representativos en las provincias específicas donde se ubican las 4 intervenciones de mercado (es decir, en los territorios asignados a Áncash, Arequipa y Puno).\
@@ -125,153 +126,221 @@ Una vez fijado ese distrito capital como el centroide o punto de origen en la zo
 
 Con la vecindad expandida en la zona de control, finalmente cruzas los datos con las variables que provienen de la **ENA y otras fuentes de información** para hacer un emparejamiento directo entre los distritos de la zona tratada y los distritos de la zona de control.
 
-**Diferencias en Diferencias (DiD)** controlando por las variables distritales y del productor que se definieron.
+**Diferencias en Diferencias (DiD)** controlando por las variables distritales y del productor que se definieron.\
 
-\
+# Pasos: Ejecutar Matching Macro para un caso
 
-# 1. Causal Framework y configuracion del Filtro Comercial (Paso 0)
+1.  obtener_provincia_control
+2.  construir_vecindades_estudio
+3.  estimar_impacto_did
+4.  Visualizar tabla de resultados econométricos
 
-Para garantizar que el modelo de Diferencias en Diferencias (\$DiD\$) evalúe impactos sobre la Agricultura Familiar comercial y no de subsistencia, se define una variable de control modificable para el **Filtro Paso 0** . Esta restringe las observaciones basales a productores con intenciones de venta superiores al umbral establecido.
+---
+title: "Análisis Cuasi-Experimental por Casos de Estudio"
+subtitle: "Evaluación de Impacto de Mercados de Abastos (UTEC)"
+author: "María Noriega"
+date: "2026-09-04"
+format: 
+  html:
+    toc: true
+    theme: cosmo
+    code-fold: show
+---
+
+```{r setup, include=FALSE}
+# Configuración global de chunks usando la sintaxis oficial de knitr
+knitr::opts_chunk$set(
+  echo = TRUE,        # Muestra el código en el informe
+  warning = FALSE,    # Oculta las advertencias de los paquetes
+  message = FALSE     # Oculta los mensajes de carga de paquetes
+)
+
+#install.packages("here")
+
+library(here)
+
+# here() siempre apunta a la raíz de tu proyecto
+source(here("R", "01_matching_macro.R"))
+source(here("R", "02_buffers_distritales.R"))
+source(here("R", "03_cargar_panel_ena.R"))
+source(here("R", "04_estimar_did.R"))
+```
+
+## 📋 Selección del Caso de Estudio
+
+Cargamos la tabla `CASOS.csv` y elegimos el caso a evaluar (ejemplo: **Caso 1.1 - Olleros**).
+
+```{r cargar_caso}
+casos_df <- read_csv(here("data_external", "CASOS.csv"), show_col_types = FALSE)
+
+# Puedes cambiar "1.1" por cualquier otro caso (ej. "2.1", "3.2")
+caso_foco <- casos_df %>% filter(caso_id == "1.1")
+caso_foco
+```
+
+------------------------------------------------------------------------
+
+## 🎯 1. Tarea 3: Matching Macro (Provincia Control)
+
+Llamamos a la función `obtener_provincia_control()` de `R/01_matching_macro.R`.
+
+```{r paso1}
+res_macro <- obtener_provincia_control(
+  ubigeo_tratado = caso_foco$ubigeo,
+  anio_proyecto  = caso_foco$anio_proyecto,
+  cultivo_foco   = caso_foco$cultivo_foco,
+  ena_pre_year   = caso_foco$ena_pre
+)
+
+cat("🏛️ Provincia Control Encontrada (Mahalanobis):", res_macro$cod_prov_control, "\n\n")
+res_macro$ranking_top5
+```
+
+**Métricas del Matching**
+
+-   **cod_prov**: Identificador provincial de 4 dígitos del INEI (ej. 1306 = Otuzco, La Libertad).
+
+-   **d_mahalanobis**: Distancia estadística multivariada entre la provincia tratada (\$X\_{trat}\$) y cada provincia candidata (\$X\_{cand}\$):
+
+    ![image.png](https://codahosted.io/docs/aP8VIeOA3q/blobs/bl-nELbCFYLT6/27c8292e00c4d0bc92dcef91aaec4c2a6e7f19cc571885f46a895131e746798052f77b3c5ab699438089352bcf4afb4b15f839a637278530e7ebf4df258cfd6263cb62149bb68d6ba353c31dbdd5f2c13122518ec07302d2627f75b97528361af51e4fa2){alt="image.png" width="385"}
+
+-   Calculada con la matriz de covarianza invertida (\$\\Sigma\^{-1}\$) de las 10 covariables.
+
+-   **dist_prov_tratada**: Distancia geográfica lineal en kilómetros entre el centroide espacial de la provincia tratada y el de la provincia candidata, calculada con st_distance() en UTM 18S (EPSG:32718).
+
+**Módulo Cap1100 (ENA - Productor)**
+
+-   **control_educ**: Promedio del nivel educativo alcanzado por los informantes principales (P1102 == 1) en la provincia, basado en la escala ordinal de la variable P1105.
+
+-   **control_edad**: Promedio de la edad en años cumplidos del productor principal (P1104_A) dentro de la provincia.
+
+**Módulo Cap200ab (ENA - Cultivos)**
+
+-   **pct_top_crop**: Porcentaje de parcelas/fincas de la provincia dedicadas al cultivo evaluado (P204_NOM == cultivo_foco), calculado como ![image.png](https://codahosted.io/docs/aP8VIeOA3q/blobs/bl-BE4Zvgl-UA/d2aca2fef230f3a12f18d5d9c7d8a77325aa800652b0ae2425c5037080dedfeded9ddc989d53ffdfd52c262749912ac1dd952c0ace28fb60e9f810b6e912c58d34eb08b21707997a33f6f4ce11a019e5bccfcfc77e3bf097e38376de5c9d1860b5afa380){alt="image.png" width="166"}.
+
+-   **pct_sup_cosechada_sembrada**: Razón provincial entre la superficie total cosechada (P217_SUP_HA) y la superficie sembrada (P210_SUP_1 + P210_SUP_2/100), expresada en porcentaje.
+
+**Módulo Cap100 (ENA - Finca)**
+
+-   **sup_media**: Promedio provincial de la superficie total por unidad agropecuaria (P104_SUP_HA), medida en hectáreas.
+
+-   **sup_desv**: Desviación estándar provincial de la superficie de las fincas (sd(sup_total)). Medida de la heterogeneidad de la estructura de tenencia de la tierra.
+
+**Archivos Externos (.csv)**
+
+-   **n_mercados**: Suma total de mercados de abasto preexistentes en los distritos de la provincia para el año \$t\_{pre}\$, extraída de UBIGEO - N MERCADOS PREEXISTENTES.csv.
+
+-   **n_productores**: Suma provincial de productores agrícolas de todas las personerías jurídicas, limpiando comas de formato miles (str_replace_all(., ",", "")) desde UBIGEO - N AGRICULTORES.csv.
+
+-   **pct_pavimentacion_vecinal**: Porcentaje de red vial vecinal pavimentada del departamento al que pertenece la provincia, extraído de CCDD - PORCENTAJE PAVIMENTACION VECINAL.csv.
+
+**Geometría INEI Spatial**
+
+-   **dist_lima**: Distancia en kilómetros desde el centroide de la provincia hasta la provincia de Lima (1501).
+
+-   **dist_cap_region**: Distancia en kilómetros desde el centroide provincial hasta el centroide del distrito capital de su propio departamento (CCDD + "0101").
 
 ```{r}
-library(tidyverse)
+# Visualización de la Matriz de Matching Macro
 library(knitr)
-library(cobalt)
+library(kableExtra)
+
+# 1. Extraer la información relevante directamente de res_macro
+matriz_prov_df <- res_macro$matriz_prov
+vars_match     <- res_macro$vars_match
+
+# 2. Filtrar la provincia tratada y agregar columnas de distancia
+prov_tratada_info <- matriz_prov_df %>% 
+  filter(cod_prov == substr(caso_foco$ubigeo, 1, 4)) %>% 
+  mutate(d_mahalanobis = 0, dist_prov_tratada = 0) %>% 
+  select(cod_prov, d_mahalanobis, dist_prov_tratada, all_of(vars_match))
+
+# 3. Consolidar Tratada vs Top 5 Control
+matriz_comparativa <- bind_rows(
+  prov_tratada_info %>% mutate(Grupo = "TRATADA"),
+  res_macro$ranking_top5 %>% mutate(Grupo = "CONTROL (Ranking)")
+) %>% 
+  select(Grupo, cod_prov, d_mahalanobis, dist_prov_tratada, everything())
+
+# 4. Mostrar la tabla en Quarto
+matriz_comparativa %>% 
+  kable(digits = 2, caption = "Matriz Comparativa de Covariables Provinciales (Mahalanobis)") %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = FALSE) %>% 
+  row_spec(1, bold = TRUE, background = "#e6f2ff")
+
 ```
+
+------------------------------------------------------------------------
+
+## 📐 2. Tarea 4: Distrito Focal y Buffers Espaciales
+
+Llamamos a `obtener_distritos_buffer()` de `R/02_buffers_distritales.R` (probando radio de **30 km**).
 
 ```{r}
-# Parámetros modificables en fórmula (Exigencia de flexibilización de José Larco)
-umbral_venta_comercial <- 50  # Porcentaje mínimo de comercialización (> 50%)
-radio_spillovers_km    <- 20  # Radio radial geográfico de prueba
+library(knitr)
+library(kableExtra)
 ```
 
-#Este documento expone de forma integrada el protocolo econométrico unificado sugerido por el #comité revisor. Se aplica un control secuencial de la Agricultura Familiar mediante el **Filtro Paso 0** #para remover unidades agrícolas cuya comercialización sea inferior al 50% en la línea de base.
+```{r paso2, results='hold'}
+source(here("R", "02_buffers_distritales.R"))
 
-```{r carga_motores_pesados}
-# Carga de las librerías base y fuentes pesadas desde la carpeta /R
-#source("../R/04_e_controles_matching_parametrizado.R")
-#library(knitr)
-
-#path_vial_maria <- "../data_external/mtc_infraestructura_vial_2017_2018_2022.csv"
-#umbral_dinamico_venta <- 50 # Parámetro modificable para la sensibilidad del Paso 0
-```
-
-# 2. Carga de Paneles .rds y Diagnóstico Visual del Matching (PSM)
-
-Llamamos a los archivos consolidados en la fase previa utilizando rutas relativas indexadas (`../data/`). A modo demostrativo para el comité revisor, realizamos el balanceo logístico y la **Inspección de Covarianza** para la **Cohorte 2 (2018-2022)**.
-
-```{r}
-# 2.1 Cargar el panel .rds de la Cohorte 2 que contiene el IPC híbrido
-panel_c2_raw <- readRDS("../../data/base_para_did_2018_2022.rds")
-```
-
-```{r}
-# 2.2 Aplicación del Filtro Paso 0 utilizando la variable paramétrica
-panel_c2_filtrado <- panel_c2_raw %>%
-  filter(pct_venta_producto >= umbral_venta_comercial)
-```
-
-```{r}
-
-# 2.3 Simulación del Algoritmo de Spillovers Geográficos y Matching (MatchIt)
-# (La variable es_tratado se reasigna espacialmente usando el mapa de centroides)
-library(MatchIt)
-
-formula_psm <- es_tratado ~ control_sup_ha + control_edad + control_educ + 
-                             control_credito + pct_transporte_pavimentado + tiempo_lima
-
-modelo_psm_c2 <- matchit(formula_psm, data = panel_c2_filtrado, 
-                         method = "nearest", distance = "glm", caliper = 0.05)
-
-df_matched_c2 <- match.data(modelo_psm_c2)
-```
-
-# 1. Visualización y Diagnóstico del Soporte Común (Covariate Balance Plot)
-
-Para validar el balance antes de los resultados puros, se computa el modelo logístico de puntaje de propensión para la **Cohorte 2017-2019 (Intervención 2018)**.
-
-```{r}
-diagnostico_c1 <- ejecutar_pipeline_robustez(
-  path_base_base = "../data/base_para_did_2017_2019.rds",
-  path_base_panel = "../data/base_para_did_2017_2019.rds",
-  path_vial = path_vial_maria,
-  anio_base = 2017,
-  col_vial_anio = "PCT_PAV_VECINAL_2017",
-  umbral_venta = umbral_dinamico_venta,
-  radio_km = 20,
-  submuestra = "Mejora",
-  var_dependiente = "log_precio_chacra"
+res_buffer <- obtener_distritos_buffer(
+  ubigeo_tratado   = caso_foco$ubigeo,
+  cod_prov_control = res_macro$cod_prov_control,
+  radio_km         = 30,
+  res_macro        = res_macro
 )
+
+# 1. Imprimir resumen de texto en consola
+cat("📍 Distrito Intervenido Focal:", res_buffer$ubigeo_foco, "-", res_buffer$distrito_foco_nom, "\n")
+cat("⭕ Distritos en Buffer Tratado (30km):", res_buffer$n_distritos_tratados, "distritos\n\n")
+
+cat("🏛️ Distrito Control Focal Elegido (Mahalanobis Micro):", res_buffer$distrito_control_focal, "-", res_buffer$distrito_control_nom, "\n")
+cat("⭕ Distritos en Buffer Control Gemelo (30km):", res_buffer$n_distritos_control, "distritos\n\n")
+
+# Forzar la salida de texto antes del renderizado de la tabla
+flush.console()
 ```
 
 ```{r}
-# Generación del Love Plot con umbral estricto (< 0.1) según la especificación técnica de RPubs
-love.plot(diagnostico_c1$psm_output, 
-          stats = c("m", "ks"), 
-          thresholds = c(m = 0.1, ks = 0.05), 
-          abs = TRUE,
-          colors = c("dodgerblue4", "firebrick"),
-          shapes = c(16, 17))
+# 2. Renderizar la tabla comparativa
+res_buffer$tabla_comparativa_distritos %>% 
+  select(Grupo, ubigeo_6dig, distrito_nombre_completo) %>% 
+  kable(col.names = c("Grupo de Análisis", "UBIGEO", "Distrito (Provincia, Departamento)"),
+        caption = "Comparativa Muestral de Buffers (30 km) - Tratado vs Control Gemelo") %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = FALSE)
+
 ```
 
-## 1.1 Listado Estructural de Distritos Matcheados en el Soporte Común
+### 📊 Resumen de la Muestra para tu Metodología DiD
 
-A continuación, se listan los primeros Ubigeos emparejados en el soporte común bajo la calibración logística y de fricción espacial de carreteras vecinales:
+-   **Grupo Tratado + Derrame Local (**$30\text{ km}$): **17 distritos** en Áncash articulados alrededor del distrito focal de Olleros.
+
+-   **Grupo Control Gemelo (**$30\text{ km}$): **15 distritos** seleccionados mediante el matching micro alrededor de Huaranchal (Otuzco).
+
+------------------------------------------------------------------------
+
+## 📊 3. Extracción de Panel ENA y Estimación DiD
+
+Llamamos a `cargar_panel_ena_did()` y `estimar_did_caso()`.
 
 ```{r}
-distritos_validos <- diagnostico_c1$matched_data %>%
-  group_by(ubigeo, DEPARTAMENTO, PROVINCIA, DISTRITO, es_tratado) %>%
-  summarize(Unidades_Agricolas_Emparejadas = n(), .groups = 'drop') %>%
-  arrange(ubigeo, desc(es_tratado))
-
-kable(head(distritos_validos, 10), caption = "Muestra de Distritos e Infras Estructuradas en el Soporte Común")
+source(here("R", "03_cargar_panel_ena.R"))
 ```
 
-# 2. Construcción de la Matriz Final de Robustez Intertemporal
+```{r paso3}
 
-Ejecutamos el bucle macro-econométrico automatizado sobre nuestras **3 variables de resultado (**Y) cruzadas secuencialmente con las **3 cohortes de evaluación histórica**, aislando el efecto de la política agraria bajo las dos clasificaciones requeridas: según tipo de obra (*Mejora* vs. *Nuevo Mercado*) y jerarquía comercial (*Mayorista/Mixto* vs. *Minorista*).
-
-```{r}
-# Inicialización de vectores de iteración estructural
-variables_y <- c("pct_venta_local", "margen_comercial", "log_precio_chacra")
-cohortes    <- list(
-  list(base = "../data/base_para_did_2017_2019.rds", panel = "../data/base_para_did_2017_2019.rds", anio = 2017, col = "PCT_PAV_VECINAL_2017", nombre = "2017-2019"),
-  list(base = "../data/base_para_did_2018_2022.rds", panel = "../data/base_para_did_2018_2022.rds", anio = 2018, col = "PCT_PAV_VECINAL_2018", nombre = "2018-2022"),
-  list(base = "../data/base_para_did_2022_2024.rds", panel = "../data/base_para_did_2022_2024.rds", anio = 2022, col = "PCT_PAV_VECINAL_2022", nombre = "2022-2024")
+panel_analisis <- cargar_panel_ena_did(
+  res_buffer     = res_buffer,
+  anio_proyecto  = caso_foco$anio_proyecto,
+  ena_pre_year   = caso_foco$ena_pre,   # Lee automáticamente 2017
+  ena_post_years = caso_foco$ena_post,  # Lee automáticamente 2019
+  dir_ena_base   = file.path(here(), "data_raw")
 )
-dimensiones <- c("Mejora", "Nuevo Mercado", "Mayorista/Mixto", "Minorista")
 
-matriz_ejecutiva_robustez <- data.frame()
-
-for (d in dimensiones) {
-  for (y in variables_y) {
-    fila <- data.frame(Filtro_Intervencion = d, Variable_Y = y)
-    
-    for (c in cohortes) {
-      res_celda <- ejecutar_pipeline_robustez(
-        path_base_base = c$base, path_base_panel = c$panel, path_vial = path_vial_maria,
-        anio_base = c$anio, col_vial_anio = c$col, umbral_venta = umbral_dinamico_venta,
-        radio_km = 20, submuestra = d, var_dependiente = y
-      )
-      
-      nombre_columna <- paste0("Cohorte_", gsub("-", "_", c$nombre))
-      
-      if (!is.null(res_celda$error) && res_celda$error) {
-        fila[[nombre_columna]] <- "N/A"
-      } else {
-        # Extraer coeficiente DiD (es_tratado:post) y su nivel de significancia estadística
-        coef_did <- round(res_celda$reg_results["es_tratado:post", "Estimate"], 4)
-        p_val    <- res_celda$reg_results["es_tratado:post", "Pr(>|t|)"]
-        estrellas <- case_when(p_val < 0.01 ~ "***", p_val < 0.05 ~ "**", p_val < 0.1 ~ "*", TRUE ~ "")
-        
-        fila[[nombre_columna]] <- paste0(coef_did, estrellas)
-      }
-    }
-    matriz_ejecutiva_robustez <- rbind(matriz_ejecutiva_robustez, fila)
-  }
-}
-
-# Renderizar Matriz Ejecutiva Final en formato Markdown puro para GitHub y HTML Cosmo
-kable(matriz_ejecutiva_robustez, 
-      caption = paste("Cuadro de Coeficientes DiD Ponderados por PSM (Filtro Comercial >", umbral_dinamico_venta, "%)"))
+# Resumen de Observaciones del Panel (Tratados vs Control)
+table(
+  Grupo = ifelse(panel_analisis$tratado == 1, "Tratado/Derrame", "Control Gemelo"),
+  Periodo = ifelse(panel_analisis$post == 1, paste0("Post (", caso_foco$ena_post, ")"), paste0("Pre (", caso_foco$ena_pre, ")"))
+)
 ```
