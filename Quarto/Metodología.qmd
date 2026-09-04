@@ -20,7 +20,7 @@ keep-md: true
 
 La creación/desarrollo de nuevos mercados de abasto, impactan en el direccionamiento de las ventas en chacra?
 
-La creación/desarrollo de nuevos mercados de abasto, impactan en el direccionamiento de las ventas en el precio venta?
+La creación/desarrollo de nuevos mercados de abasto, impactan en el precio venta?
 
 \*revisar si existe una correlación en costo y direccionamiento de venta
 
@@ -58,15 +58,15 @@ Por distrito y cultivo:\
 5. control_cred\
 \
 Por distrito:\
-6. Poblacion (2017, 2018, 2022)\
-7. N Mercados Preexistentes (2017, 2018, 2022)\
-8. (NUEVO) N Agricultores (utilizando datos del Censo Agropecuario como proxy)\
-9. (NUEVO) % Mercado Mayorista o Mixto (2017, 2018, 2022)\
-10. (NUEVO) Superficie cosechada suma agregada (2017, 2018, 2022)\
-10. (NUEVO) % Superficie total UAs o cosechado (2017, 2018, 2022)\
-11. (NUEVO) Varianza % Superficie total UAs o cosechado (2017, 2018, 2022)\
-12. Superficie KM2 (fijo del distrito)\
-13. Altitud (fijo del distrito)\
+**6. Poblacion (Proyectada para los Años Pre: 2017, 2022, 2023)\
+7. N Mercados Preexistentes (ENA Años Pre: 2017, 2022, 2023)\
+8. (NUEVO) N Agricultores (utilizando datos del Censo Agropecuario 2012 como proxy)\
+9. (NUEVO) % Mercado Mayorista o Mixto (ENA Años Pre: 2017, 2022, 2023)**\
+10. (NUEVO) Superficie cosechada suma agregada (ENA Años Pre: 2017, 2022, 2023)\
+10. (NUEVO) % Superficie total UAs o cosechado (ENA Años Pre: 2017, 2022, 2023)\
+11. (NUEVO) Varianza % Superficie total UAs o cosechado (ENA Años Pre: 2017, 2022, 2023)\
+**12. Superficie KM2 (fijo del distrito)\
+13. Altitud (fijo del distrito)**\
 \
 Por departamento:\
 14. % de Pavimentación vecinal\
