@@ -413,3 +413,34 @@ summary(res_mecanismos$opcion2_local)
 *Para verificar la consistencia metodológica de los canales de transmisión, se estimaron dos especificaciones del modelo de regresión con efectos fijos distritales y multianuales. En la especificación principal (Opción 1, con variables separadas de oferta y demanda), el término de interacción de la oferta cosechada (*$\text{Treat} \times \text{Post} \times \text{Oferta}$) presenta un impacto negativo de $-0.2346$ sobre el precio en chacra ($p = 0.066$), evidenciando el efecto de saturación local. Por su parte, la presión de demanda ($\text{Treat} \times \text{Post} \times \text{Población}$) amortigua esta caída con un impacto positivo de $+0.2040$ ($p = 0.103$), alcanzando un $R^2$ ajustado de $0.795$.
 
 *Como prueba de robustez (Opción 2), se integró la presión de mercado mediante un índice relativo (*$\ln(\text{Población}/\text{Oferta Ha})$). Los resultados confirman la dirección teórica esperada, donde el coeficiente de interacción ($\text{Treat} \times \text{Post} \times \text{Índice}$) muestra un efecto positivo de $+0.1517$ en el precio de venta en chacra y de $+18.75$ puntos porcentuales en la comercialización canalizada al mercado local.
+
+```{r}
+# Cargar función de gráficos
+source(here("R/05_graficar_did.R"))
+```
+
+```{r paso5_graficos, fig.width=8, fig.height=5}
+
+# Generar gráficos DiD
+graficos_did <- graficar_tendencias_did(
+  panel_mkt = res_mecanismos$data_mkt, 
+  anio_proyecto = caso_foco$anio_proyecto
+)
+
+# Mostrar Gráfico 1: Impacto en Precio Chacra
+graficos_did$grafico_precio
+
+# Mostrar Gráfico 2: Impacto en Comercialización Local
+graficos_did$grafico_local
+
+# Mostrar Gráfico 3: Índice de Mercado (Opción 2)
+graficos_did$grafico_indice
+```
+
+**Análisis Visual de los Resultados DiD**
+
+-   **Gráfica 1 (Precio en Chacra)**: Muestra con claridad cómo en 2017 los distritos de tratamiento partían de un nivel de precio promedio más alto que el grupo de control. Ambos grupos experimentaron una tendencia decreciente hacia 2019, pero la pendiente del grupo de tratamiento es más pronunciada, lo que explica el coeficiente negativo del término DiD directo ($\text{tratado_x_post}$) y cómo las interacciones con la oferta y la demanda ajustan esa trayectoria.
+
+-   **Gráfica 2 (Direccionamiento Comercial Local - % Venta Local)**: Muestra tendencias paralelas antes del choque de 2018. Tras la intervención, la proporción de venta en el mercado local para el grupo tratado (verde) crece de un $83\%$ a casi $88\%$, mientras que el grupo de control (rojo) salta hasta el $100\%$, sustentando visualmente el cambio en los patrones de canalización comercial.
+
+-   **Gráfica 3 (Índice de Presión Demográfica - Opción 2)**: Demuestra un supuesto de tendencias paralelas perfecto en el índice $\ln(\text{Población}/\text{Oferta})$. Ambas curvas evolucionan con pendientes idénticas entre 2017 y 2019, confirmando la validez del grupo de control en términos de la presión de mercado relativa.
